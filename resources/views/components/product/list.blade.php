@@ -1,82 +1,96 @@
-<!-- [ Main Content ] start -->
-<div class="pc-container">
+<!-- Contenido Principal -->
+<main class="flex-1 p-6 overflow-auto h-screen">
     <div class="pcoded-content" id="list-product">
 
         <div v-show="isLoading"><center><img :src="'/assets/img/gif/loading.gif'" alt=""></center></div>
         <div v-show="!isLoading">
-            <div class="row">
-                <div class="card">
-                
-                    <div class="card-header">
-                        <h5 class="mb-0">Filtrar</h5>
-                        <div class="d-flex justify-content-between align-items-center row pt-4 gap-4 gap-md-0">
-                            <div class="col-md-4 product_status">
-                                <select v-model="state" class="form-select text-capitalize">
-                                    <option v-for="option in status" :value="option.id">
-                                        @{{ option?.name }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 product_category">
-                                <select v-model="category" class="form-select text-capitalize">
-                                    <option value="0">Todas</option>
-                                    <option v-for="option in categories" :value="option.id">
-                                        @{{ option?.name }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 product_stock">
-                                <input type="text" class="form-control" placeholder="Nombre">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <div class="text-right">
-                            <button class="btn btn-md btn-primary" data-toggle="modal" data-target="#modalProduct" @click="ModalProducts(false, '')">
-                                <i class="material-icons-two-tone text-white">add</i> Agregar Producto
-                            </button> 
-                        </div> <br>
-                
 
-                        <table class="table table-hover">
-                            <head>
-                                <th>Producto</th>
-                                <th>Categoria</th>
-                                <th>Precio</th>
-                                <th>Activo</th>
-                                <th>Accion</th>
-                            </head>
-                            <body>
-                                <tr v-for="product in products">
-                                    <td>
-                                        <div class="d-flex justify-content-start align-items-center product-name">
-                                            <div class="avatar-wrapper me-4">
-                                                <div class="avatar rounded-2 bg-label-secondary">
-                                                    <img :src="product.img ? 'assets/images_company/company_'+{{session('company_id')}}+'/'+product.img : 'assets/img/company/no-image.jpg'" alt="Product-9" class="rounded-2 img-product">
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <span class="text-nowrap text-heading fw-medium"> @{{product.name}}</span><small class="text-truncate d-none d-sm-block">@{{product.description}}</small>
+            <div class="card bg-base-100 shadow-xl p-4">
+                <!-- Header con filtros -->
+                <div class="card-body">
+                    <h2 class="card-title text-lg font-semibold">Filtros</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <select v-model="state" class="select select-bordered w-full text-capitalize">
+                            <option v-for="option in status" :value="option.id">
+                                @{{ option?.name }}
+                            </option>
+                        </select>
+            
+                        <select v-model="category" class="select select-bordered w-full text-capitalize">
+                            <option value="0">Todas</option>
+                            <option v-for="option in categories" :value="option.id">
+                                @{{ option?.name }}
+                            </option>
+                        </select>
+            
+                        <input type="text" class="input input-bordered w-full" placeholder="Nombre">
+                    </div>
+                </div>
+               
+                <!-- Botón para abrir el modal -->
+                <button class="btn btn-soft btn-primary" @click="openModal(false, '')"><i class="material-icons text-3xl">add</i> Agregar producto</button>
+                <!-- Body con la tabla -->
+                <div class="overflow-x-auto">
+                    <table class="table w-full">
+                        <!-- Encabezado -->
+                        <thead>
+                            <tr class="bg-base-200">
+                                <th >Producto</th>
+                                <th class="text-center">Categoria</th>
+                                <th class="text-center">Precio</th>
+                                <th class="text-center">Activo</th>
+                                <th class="text-center">Accion</th>
+                            </tr>
+                        </thead>
+                        <!-- Cuerpo de la tabla -->
+                        <tbody>
+                            <tr v-for="product in products" :key="product.id" class="hover:bg-base-200">
+                                <!-- Producto -->
+                                <td>
+                                    <div class="flex items-center gap-4">
+                                        <!-- Imagen del producto -->
+                                        <div class="avatar">
+                                            <div class="w-16 h-16 rounded">
+                                                <img :src="product.img ? 'assets/images_company/company_'+{{session('company_id')}}+'/'+product.img : 'assets/img/company/no-image.jpg'" alt="Producto">
                                             </div>
                                         </div>
-                                    </td>
-                                    <td>@{{product.category?.name}}</td>
-                                    <td>$ @{{ formatNumber(product.price) }}</td>
-                                    <td> 
-                                        <i v-show="product.is_active" class="material-icons-two-tone text-success">check</i>
-                                        <i v-show="!product.is_active" class="material-icons-two-tone text-danger">close</i>
-                                    </td>
-                                    <td>
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#modalProduct" @click="ModalProducts(true, product)"><i class="icon feather icon-edit f-16  text-success"></i></a>
-                                        <a href="javascript:void(0);"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a>
-                                    </td> 
-                                </tr>
-                            </body>
-                        </table>
-                    </div>
-                    
+                                        <!-- Información del producto -->
+                                        <div class="flex flex-col">
+                                            <span class="font-medium text-base text-heading">@{{ product.name }}</span>
+                                            <small class="text-gray-500 text-sm">@{{ product.description }}</small>
+                                        </div>
+                                    </div>
+                                </td>
+                            
+                                <!-- Categoría -->
+                                <td class="text-center">@{{ product.category?.name }}</td>
+                            
+                                <!-- Precio -->
+                                <td class="text-center font-semibold">$ @{{ formatNumber(product.price) }}</td>
+                            
+                                <!-- Estado -->
+                                <td class="text-center">
+                                    <span v-if="product.is_active" class="badge badge-success">Activo</span>
+                                    <span v-else class="badge badge-error">Inactivo</span>
+                                </td>
+                            
+                                <!-- Acciones -->
+                                <td class="text-center">
+                                    <button @click="openModal(true, product)" class="btn btn-outline btn-primary btn-sm btn-circle">
+                                        <i class="material-icons text-3xl">edit_square</i>
+                                    </button>
+                                    <button class="btn btn-outline btn-error btn-sm btn-circle">
+                                        <i class="material-icons text-danger text-3xl">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
+        
 
              <!-- Modal ModalProducts -->
              @include('components.product.modals.form-modal')
@@ -84,5 +98,6 @@
         
 
     </div>
-</div>
+</main>
+
 <!-- [ Main Content ] end -->

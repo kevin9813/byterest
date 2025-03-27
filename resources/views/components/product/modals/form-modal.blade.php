@@ -1,68 +1,100 @@
-<div id="modalProduct" class="modal fade" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true" data-backdrop="static" data-keyboard="false">>
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">
-                    <i class="material-icons-two-tone  text-primary">add_shopping_cart</i> @{{is_update ? 'Actualizar' : 'Agregar'}}  Producto
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<dialog id="my_modal_products" class="modal" v-show="isModalOpen">
+    <div class="modal-box relative">
+        <!-- Cerrar Modal -->
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="closeModal">✕</button>
+        </form>
+
+        <!-- Título -->
+        <h3 class="text-xl font-bold text-center mb-6 text-primary">
+            <i class="material-icons text-3xl">browser_updated</i> 
+            @{{ is_update ? 'Actualizar' : 'Agregar' }} Producto
+        </h3>
+
+        <!-- Cargando Modal -->
+        <div v-show="isLoadingModal" class="modal-body flex justify-center items-center">
+            <img :src="'/assets/img/gif/loading.gif'" alt="Loading...">
+        </div>
+
+        <!-- Formulario -->
+        <div class="space-y-6 py-6">
+            <!-- Mensaje de error -->
+            <div v-show="msg !== ''" role="alert" class="alert alert-error alert-soft">
+                <i class="material-icons text-3xl">warning</i>
+                <span>@{{ msg }}</span>
             </div>
-            <div v-show="isLoadingModal" class="modal-body"><center><img :src="'/assets/img/gif/loading.gif'" alt=""></center></div>
-            <div class="modal-body">
-                <div  class="row">
-                    <div class="col-12" v-show="msg != ''">
-                        <div class="alert alert-danger d-flex align-items-center" role="alert">
-                            <i class="material-icons-two-tone  text-danger">warning</i>
-                            <div> @{{msg}} </div>
-                        </div>
-                    </div>
-                    <div class="mb-3 col-md-6">
-                        <label class="form-label">Nombre *</label> 
-                        <input v-model="name" type="text" class="form-control" placeholder="Nombre">
-                    </div>
-                    <div class="mb-3 col-md-6">
-                        <label class="form-label">Categoria *</label> 
-                        <select v-model="category" class="form-select text-capitalize">
-                            <option v-for="option in categories" :value="option.id">
-                                @{{ option?.name }}
-                            </option>
-                        </select>
+
+            <!-- Nombre -->
+            <div class="form-control">
+                <label class="label" for="name">
+                    <span class="label-text">Nombre *</span>
+                </label>
+                <input v-model="name" type="text" class="input input-bordered w-full" placeholder="Nombre" id="name">
+            </div>
+
+            <!-- Categoría -->
+            <div class="form-control">
+                <label class="label" for="category">
+                    <span class="label-text">Categoría *</span>
+                </label>
+                <select v-model="category" class="select select-bordered w-full" id="category">
+                    <option v-for="option in categories" :value="option.id">
+                        @{{ option?.name }}
+                    </option>
+                </select>
+            </div>
+
+            <!-- Descripción -->
+            <div class="form-control">
+                <label class="label" for="description">
+                    <span class="label-text">Descripción</span>
+                </label>
+                <input v-model="description" type="text" class="input input-bordered w-full" placeholder="Descripción corta" id="description">
+            </div>
+
+            <!-- Fila de Precio y Activo -->
+            <div class="flex space-x-4">
+                <!-- Precio -->
+                <div class="form-control w-full md:w-1/2">
+                    <label class="label" for="price">
+                        <span class="label-text">Precio</span>
+                    </label>
+                    <input v-model="price" type="text" class="input input-bordered w-full" id="price">
+                </div>
+
+                <!-- Activo (Mostrar en web) -->
+                <div class="form-control w-full md:w-1/2">
+                    <label class="label">
+                        <span class="label-text">Activo (Mostrar en web)</span>
+                    </label>
+                    <div class="flex items-center">
+                        <label class="swap">
+                            <input v-model="active" type="checkbox" class="toggle toggle-success" id="customCheckdefh4" checked="checked">
+                            <div class="swap-on">Sí</div>
+                            <div class="swap-off">No</div>
+                        </label>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Descripción</label> 
-                    <input v-model="description" type="text" class="form-control" placeholder="Descripción corta">
-                </div>
-                <div class="row">
-                    <div class="mb-3 col-md-4">
-                        <label class="form-label">Precio</label> 
-                        <input v-model="price" type="text" class="form-control">
-                    </div>
-                    <div class="mb-3 col-md-5">
-                        <label class="form-label">Cargar Foto</label> 
-                        <input type="file" @change="handleFileUpload" class="form-control" accept="image/jpeg, image/png, image/heic">
-                    </div>
-                    <div class="mb-3 col-md-3">
-                        <label class="form-label">Activo (Mostrar en web)</label> 
-                        <div class="form-check form-switch custom-switch-v1 mb-2">
-                            <input v-model="active" type="checkbox" class="form-check-input input-light-success" id="customCheckdefh4" checked="checked"> 
-                        </div>
-                    </div>
-                    <br><div class="col-12">
-                        <!-- Mostrar vista previa de la imagen -->
-                        <center>
-                            <img v-if="!is_update && imagePreview" :src="imagePreview" alt="Vista previa" width="200">
-                            <img v-if="is_update && imagePreview" :src="'assets/images_company/company_'+{{session('company_id')}}+'/'+imagePreview+''"  alt="Vista previa" width="200">
-                        </center>
-                    </div>
-                </div>
-            
-                <center>
-                    <br><button v-show="!isLoadingModal" type="submit" class="btn btn-primary" @click="addUpdateProduct()">Guardar</button>
-                </center>
+            </div>
+
+            <!-- Cargar Foto -->
+            <div class="form-control w-full">
+                <label class="label" for="file">
+                    <span class="label-text">Cargar Foto</span>
+                </label>
+                <input type="file" @change="handleFileUpload" id="file" class="file-input file-input-bordered file-input-primary w-full" accept="image/jpeg, image/png, image/heic">
+            </div>
+
+            <!-- Vista previa de la imagen -->
+            <div class="col-12 text-center mt-4">
+                <img v-if="!is_update && imagePreview" :src="imagePreview" alt="Vista previa" class="w-48 mt-2 rounded-lg shadow-lg">
+                <img v-if="is_update && imagePreview" :src="'assets/images_company/company_'+{{session('company_id')}}+'/'+imagePreview" alt="Vista previa" class="w-48 mt-2 rounded-lg shadow-lg">
             </div>
         </div>
+
+        <!-- Botón para guardar -->
+        <div class="flex justify-center mt-6">
+            <button v-show="!isLoadingModal" type="submit" class="btn btn-primary w-full md:w-1/2" @click="addUpdateProduct()">Guardar</button>
+        </div>
     </div>
-</div> 
+</dialog>

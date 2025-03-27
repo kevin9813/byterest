@@ -7,78 +7,47 @@
     <!-- Favicon icon -->
     <link rel="icon"  href="{{ asset('assets/img/logo.svg') }}"  type="image/x-icon">
 
-    <!-- font css -->
-    <link rel="stylesheet"  href="{{ asset('assets/fonts/feather.css') }}" >
-    <link rel="stylesheet"  href="{{ asset('assets/fonts/fontawesome.css') }}" >
-    <link rel="stylesheet"  href="{{ asset('assets/fonts/material.css') }}">
-
-    <!-- vendor css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" id="main-style-link">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles-preset.css') }}" id="main-style-link">
-
-
-	<!-- disenos -->
-    <link rel="stylesheet" href="{{ asset('assets/css/diseno.css') }}" id="main-style-link">
-
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="">
+<body class="bg-gray-100">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<!-- [ Pre-loader ] start -->
-	<div class="loader-bg">
-		<div class="loader-track">
-			<div class="loader-fill"></div>
-		</div>
-	</div>
-	<!-- [ Pre-loader ] End -->
-	<!-- [ Mobile header ] start -->
-	<div class="pc-mob-header pc-header">
-		<div class="pcm-logo">
-			<img src="{{ asset('assets/img/logo.svg') }}" alt="" class="logo logo-lg">
-		</div>
-		<div class="pcm-toolbar">
-			<a href="#!" class="pc-head-link" id="mobile-collapse">
-				<div class="hamburger hamburger--arrowturn">
-					<div class="hamburger-box">
-						<div class="hamburger-inner"></div>
-					</div>
-				</div>
-			</a>
-			<a href="#!" class="pc-head-link" id="headerdrp-collapse">
-				<i data-feather="align-right"></i>
-			</a>
-			<a href="#!" class="pc-head-link" id="header-collapse">
-				<i data-feather="more-vertical"></i>
-			</a>
-		</div>
-	</div>
-	<!-- [ Mobile header ] End -->
 
-	<!-- [ navigation menu ] start -->
-	<nav class="pc-sidebar @@menuclass">
-		<div class="navbar-wrapper">
-			<div class="m-header">
-				<a href="index.html" class="b-brand">
-					<!-- ========   change your logo hear   ============ -->
-					<img src="{{ asset('assets/img/logo.svg') }}" alt="" class="logo logo-lg">
-					<img src="{{ asset('assets/img/logo.svg') }}" alt="" class="logo logo-sm">
-				</a>
-			</div>
-			<div class="navbar-content">
-				<ul class="pc-navbar">
-					@include('layouts.menu-list')
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- [ navigation menu ] end -->
-	<!-- [ Header ] start -->
-	<header class="pc-header @@headerclass">
-		<div class="header-wrapper">
-            @include('layouts.header-content')
-		</div>
-	</header>
-	<!-- [ Header ] end -->
+	<div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="group flex flex-col items-center w-16 hover:w-64 transition-all duration-300 bg-gray-600 text-white shadow-lg">
+            <!-- Header -->
+            <div class="flex items-center justify-between w-full p-4">
+                <span class="text-xl font-bold hidden group-hover:block">Menú</span>
+                <label for="sidebar-toggle" class="btn btn-circle text-white bg-transparent border-none lg:hidden">☰</label>
+            </div>
 
+            <!-- Usuario -->
+            <div class="flex flex-col items-center group-hover:flex-row gap-2 p-4">
+                <img src="https://i.pravatar.cc/40" class="rounded-full border-2 border-white">
+                <span class="hidden group-hover:block">{{ session('user_name') }}</span>
+            </div>
 
+            <!-- Menú -->
+            <ul class="menu p-2 flex-1 w-full">
+                <li>
+                    <a href="/dashboard" class="flex items-center gap-2">
+                        <span class="material-icons text-white-500 text-3xl">home</span>
+                        <span class="hidden group-hover:inline">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/product" class="flex items-center gap-2">
+                        <span class="material-icons text-white-500 text-3xl">view_list</span>
+                        <span class="hidden group-hover:inline">Productos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/company" class="flex items-center gap-2">
+                        <span class="material-icons text-white-500 text-3xl">settings</span>
+                        <span class="hidden group-hover:inline">Configuración</span>
+                    </a>
+                </li>
+            </ul>
+        </div>

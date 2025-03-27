@@ -35,7 +35,8 @@ const Global = (() => {
         }
     }
 
-    // 🔹 Funciones auxiliares adicionales
+    
+    // Funciones auxiliares adicionales
     const utils = {
         toUpperCase: (text) => text ? text.toUpperCase() : '',
         toLowerCase: (text) => text ? text.toLowerCase() : '',

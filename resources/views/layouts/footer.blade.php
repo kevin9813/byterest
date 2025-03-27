@@ -1,22 +1,17 @@
     
-    <script src="{{ asset('assets/js/vendor-all.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/bootstrap.min.js') }}" ></script>
-    <script src="{{ asset('assets/js/plugins/feather.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pcoded.min.js') }}"></script>
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-
-    
-
+   </div>
     <!--Vuej -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>  
   
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     {{-- Funciones globales de vuejs --}}
     <script type="module" src="{{ asset("assets/js/components/controllers/global.js?v=1.1") }}"></script>
 
     {{-- sweetalert2 --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+    
     {{-- Scripts de json para cada vista  --}}
     @if ($script != "")
         @if (is_array($script))
