@@ -19,8 +19,8 @@
     <script src="{{ asset("assets/js/app.js?v=1") }}"></script>
     <!--Vuej -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>  
-    <!-- Tailwind desde CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <script src="{{ asset("assets/js/plugins/tailwindcss.js?v=1") }}"></script>
     {{-- Funciones globales de vuejs --}}
     <script type="module" src="{{ asset("assets/js/components/controllers/global.js?v=1.1") }}"></script>
 
