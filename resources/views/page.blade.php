@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema POS - Sidebar & Navbar Inferior</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- DaisyUI -->
     <script src="https://cdn.jsdelivr.net/npm/daisyui@3.5.0"></script>
+
     <style>
-        /* Sidebar pequeño */
+        /* Ajustes para el Sidebar Pequeño */
         .sidebar-small {
             position: fixed;
             top: 0;
@@ -23,22 +27,11 @@
             padding-top: 20px;
             padding-bottom: 20px;
             transition: width 0.3s;
-        }
-        .sidebar-small button {
-            margin: 10px 0;
-            font-size: 24px;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
 
-        /* Estilo de la imagen de perfil */
-        .profile-pic {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #ccc;
-        }
-
-        /* Sidebar grande */
+        /* Sidebar grande y otros menús laterales */
         .sidebar-large, .sidebar-notifications, .sidebar-messages {
             position: fixed;
             top: 0;
@@ -51,15 +44,12 @@
             transition: left 0.3s;
             z-index: 20;
         }
+
         .sidebar-large.open, .sidebar-notifications.open, .sidebar-messages.open {
             left: 60px;
         }
-        
-        .overlay.show {
-            display: block;
-        }
-        
-        /* Contenido */
+
+        /* Contenido principal */
         .content {
             margin-left: 60px;
             flex: 1;
@@ -69,7 +59,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         /* Barra inferior en móviles */
         .bottom-nav {
             position: fixed;
@@ -82,18 +72,39 @@
             padding: 10px 0;
             z-index: 30;
         }
-        .bottom-nav button {
-            font-size: 24px;
+
+        .border-r-1{
+            border-right-width: 1px;
         }
-        
-        /* Ajustes en móviles */
+
+        .border-r-2{
+            border-right-width: 2px;
+        }
+
+        .rounded-tr-3xl{
+            border-top-right-radius: 2px;
+        }
+
+        .rounded-br-3xl {
+            border-bottom-right-radius: 1.5rem;
+        }
+
+        @media (min-width: 768px) { 
+            .bottom-nav {
+                display: none !important;
+            }
+        }
+
+        /* Ajustes para móviles */
         @media (max-width: 768px) {
             .sidebar-small {
                 display: none;
             }
+
             .content {
                 margin-left: 0;
             }
+
             .sidebar-large, .sidebar-notifications, .sidebar-messages {
                 top: 0;
                 left: -80%;
@@ -101,41 +112,36 @@
                 width: 70%;
                 border-radius: 0;
             }
+
             .sidebar-large.open, .sidebar-notifications.open, .sidebar-messages.open {
                 left: 0;
-            }
-            .overlay {
-                display: block;
             }
         }
     </style>
 </head>
-<body>
-    <div class="overlay" id="overlay" onclick="closeAllSidebars()"></div>
+<body class="bg-gray-100">
+
     <div class="flex h-screen">
         <!-- Sidebar pequeño -->
-        <aside class="sidebar-small hidden lg:flex" id="sidebarSmall">
+        <aside class="sidebar-small hidden lg:flex rounded-tr-3xl rounded-br-3xl" id="sidebarSmall">
             <div class="text-center">
                 <button onclick="toggleSidebar('sidebarLarge')">🏠</button>
                 <button onclick="toggleSidebar('sidebarMessages')">💬</button>
                 <button onclick="toggleSidebar('sidebarNotifications')">🔔</button>
             </div>
-            <div>
-                <img src="https://via.placeholder.com/40" alt="Perfil" class="profile-pic">
-            </div>
         </aside>
         
         <!-- Sidebar grande -->
-        <aside class="sidebar-large" id="sidebarLarge">
+        <aside class="sidebar-large rounded-tr-3xl rounded-br-3xl" id="sidebarLarge">
             <button onclick="closeAllSidebars()">✕</button>
             <nav class="mt-5">
                 <a href="#" class="block p-2 text-purple-600">🏠 Home</a>
                 <a href="#" class="block p-2 text-purple-600">📄 Pages</a>
             </nav>
         </aside>
-        
+
         <!-- Sidebar de mensajes -->
-        <aside class="sidebar-messages" id="sidebarMessages">
+        <aside class="sidebar-messages rounded-tr-3xl rounded-br-3xl" id="sidebarMessages">
             <button onclick="closeAllSidebars()">✕</button>
             <nav class="mt-5">
                 <p class="p-2 text-gray-600">📩 Mensajes</p>
@@ -143,7 +149,7 @@
         </aside>
 
         <!-- Sidebar de notificaciones -->
-        <aside class="sidebar-notifications" id="sidebarNotifications">
+        <aside class="sidebar-notifications rounded-tr-3xl rounded-br-3xl" id="sidebarNotifications">
             <button onclick="closeAllSidebars()">✕</button>
             <nav class="mt-5">
                 <p class="p-2 text-gray-600">🔔 Notificaciones</p>
@@ -156,7 +162,7 @@
         </div>
         
         <!-- Barra inferior en móviles -->
-        <nav class="bottom-nav lg:hidden">
+        <nav class="bottom-nav block lg:hidden">
             <button onclick="toggleSidebar('sidebarLarge')">🏠</button>
             <button onclick="toggleSidebar('sidebarMessages')">💬</button>
             <button onclick="toggleSidebar('sidebarNotifications')">🔔</button>
@@ -167,15 +173,14 @@
         function toggleSidebar(id) {
             closeAllSidebars();
             document.getElementById(id).classList.toggle("open");
-            document.getElementById("overlay").classList.toggle("show");
         }
         
         function closeAllSidebars() {
             document.getElementById("sidebarLarge").classList.remove("open");
             document.getElementById("sidebarMessages").classList.remove("open");
             document.getElementById("sidebarNotifications").classList.remove("open");
-            document.getElementById("overlay").classList.remove("show");
         }
     </script>
+
 </body>
 </html>

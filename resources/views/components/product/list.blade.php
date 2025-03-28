@@ -28,7 +28,9 @@
                 </div>
                
                 <!-- Botón para abrir el modal -->
-                <button class="btn btn-soft btn-primary" @click="openModal(false, '')"><i class="material-icons text-3xl">add</i> Agregar producto</button>
+                <button class="btn bg-blue-500 text-white hover:bg-blue-600" @click="openModal(false, '')">
+                    <i class="material-icons text-3xl">add</i> Agregar producto
+                  </button>
                 <!-- Body con la tabla -->
                 <div class="overflow-x-auto">
                     <table class="table w-full">
