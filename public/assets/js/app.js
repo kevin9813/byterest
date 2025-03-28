@@ -1,4 +1,18 @@
 
+// document.addEventListener("contextmenu", (event) => event.preventDefault()); // Bloquea clic derecho
+// document.addEventListener("keydown", (event) => {
+//     if (event.ctrlKey && (event.key === "u" || event.key === "U")) {
+//         event.preventDefault(); // Bloquea Ctrl + U (ver código fuente)
+//     }
+//     if (event.ctrlKey && event.shiftKey && (event.key === "i" || event.key === "I")) {
+//         event.preventDefault(); // Bloquea Ctrl + Shift + I
+//     }
+//     if (event.key === "F12") {
+//         event.preventDefault(); // Bloquea F12
+//     }
+// });
+
+
 function toggleSidebar(id) {
     let sidebar = document.getElementById(id);
 
