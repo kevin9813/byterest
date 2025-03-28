@@ -28,15 +28,16 @@
                 </div>
                
                 <!-- Botón para abrir el modal -->
-                <button class="btn bg-blue-500 text-white hover:bg-blue-600" @click="openModal(false, '')">
+                <button class="btn btn-primary" @click="openModal(false, '')">
                     <i class="material-icons text-3xl">add</i> Agregar producto
-                  </button>
+                </button>
                 <!-- Body con la tabla -->
                 <div class="overflow-x-auto">
                     <table class="table w-full">
                         <!-- Encabezado -->
                         <thead>
                             <tr class="bg-base-200">
+                                <th class="text-center">Codigo</th>
                                 <th >Producto</th>
                                 <th class="text-center">Categoria</th>
                                 <th class="text-center">Precio</th>
@@ -47,12 +48,14 @@
                         <!-- Cuerpo de la tabla -->
                         <tbody>
                             <tr v-for="product in products" :key="product.id" class="hover:bg-base-200">
+                                <!-- Codigo -->
+                                <td class="text-center">@{{ product.id }}</td>
                                 <!-- Producto -->
                                 <td>
                                     <div class="flex items-center gap-4">
                                         <!-- Imagen del producto -->
                                         <div class="avatar">
-                                            <div class="w-16 h-16 rounded">
+                                            <div class="w-8 h-8 rounded">
                                                 <img :src="product.img ? 'assets/images_company/company_'+{{session('company_id')}}+'/'+product.img : 'assets/img/company/no-image.jpg'" alt="Producto">
                                             </div>
                                         </div>

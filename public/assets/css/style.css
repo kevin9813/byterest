@@ -1,3 +1,6 @@
+:root {
+  --color-primary: rgb(2, 65, 140);
+}
 /* Ajustes para el Sidebar Pequeño */
 .sidebar-small {
   position: fixed;
@@ -41,12 +44,8 @@
 /* Contenido principal */
 .content {
   margin-left: 60px;
-  flex: 1;
   min-height: 100vh;
   background: #F3F4F6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* Barra inferior en móviles */
