@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('usuario')->unique();
             $table->string('password');
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('rol_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('rols_id')->constrained()->cascadeOnDelete();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
