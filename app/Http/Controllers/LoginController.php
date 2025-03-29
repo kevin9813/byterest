@@ -34,18 +34,7 @@ class LoginController extends Controller
             // Guardar variables en la session
             session(['user_id' => $user->id]);
             session(['user_name' => $user->name]);
-
-            $user_company = User::select('id', 'name', 'branch_id')
-                ->with(['branches:id,company_id'])
-                ->where('id', $user->id)
-                ->first();
-
-            if(isset($user['branches'])){
-                session(['branch_id' => $user_company['branches']['id']]);
-                session(['company_id' => $user_company['branches']['company_id']]);
-            }else{
-                return redirect('/logout');
-            }
+            session(['company_id' => $user->company_id]);
 
             return redirect()->intended('/dashboard');
         }

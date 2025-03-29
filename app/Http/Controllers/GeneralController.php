@@ -51,8 +51,6 @@ class GeneralController extends Controller
             ]);
 
         $scripts = [
-            "plugins/apexcharts.min",
-            "pages/dashboard-sale"
         ];
         $this->renderFooter($scripts, "", 2, 2);
     }
