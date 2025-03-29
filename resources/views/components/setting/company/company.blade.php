@@ -9,6 +9,11 @@
             <div class="card bg-base-100 shadow-xl p-4">
                 <div class="bg-primary/10 rounded-box relative w-full overflow-hidden p-6">
                     <div class="flex justify-between">
+                        <div class="avatar">
+                            <div class="w-24 rounded">
+                                <img :src="'/assets/img/company/logoempresa_'+{{session('company_id')}}+'.jpg'">
+                            </div>
+                        </div>
                         <div>
                             <div class="flex items-center gap-1">
                                 <p class="text-sm">Nit: @{{company?.nit}}</p>
@@ -29,15 +34,14 @@
                     </div>
                     <span class="iconify lucide--settings text-primary/5 absolute start-1/2 -bottom-12 size-44 -rotate-25"></span>
                 </div>
-            </div><br>
+            </div>
 
-            <div class="card bg-base-100 shadow-xl p-4">
-                <p class="mt-12 text-center text-2xl font-medium">Sucursales</p>
-                <div class="card w-96 bg-base-100 shadow-sm">
-                    <div class="card-body" v-for="branch in company?.branches">
-                        <div class="flex justify-between">
-                            <h2 class="text-3xl font-bold">@{{ branch.name }}</h2>
-                        </div>
+            <p class="mt-12 text-center text-2xl bg-base-100 font-medium">Sucursales</p>
+            <div class="grid gap-6 md:grid-cols-2 2xl:grid-cols-4 bg-base-100 shadow-xl p-4">
+
+                <div class="card bg-base-100 shadow transition-all hover:shadow-md" v-for="branch in company?.branches">
+                    <div class="card-body p-4">
+                        <div class="flex justify-between"><h2 class="text-3xl font-bold">@{{ branch.name }}</h2></div>
                         <ul class="mt-6 flex flex-col gap-2 text-xs">
                             <li>
                                 <span><i class="material-icons text-3xl">map</i> Ciudad: @{{ branch?.city.name }}</span>
@@ -53,11 +57,12 @@
                             </li>
                         </ul>
                         <div class="mt-6">
-                            <button class="btn btn-primary btn-block">Editar</button>
+                            <button class="btn btn-primary btn-block"><i class="material-icons text-3xl">edit_square</i> Editar</button>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>              
+
+            </div>            
 
         </div>
     </div>

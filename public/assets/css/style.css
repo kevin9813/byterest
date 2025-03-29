@@ -1,6 +1,11 @@
 :root {
   --color-primary: rgb(2, 65, 140);
 }
+
+html, body {
+  overflow-x: hidden;
+}
+
 /* Ajustes para el Sidebar Pequeño */
 .sidebar-small {
   position: fixed;
@@ -85,7 +90,8 @@
   }
 
   .content {
-      margin-left: 0;
+    margin-left: 0;
+    padding-block-end: 50px
   }
 
   .sidebar-large, .sidebar-notifications, .sidebar-messages, .sidebar-settings{
