@@ -53,16 +53,20 @@ class DatabaseSeeder extends Seeder
             // 4 Pedidos
             ['name' => 'Ver pedidos', 'type' => 4],
             ['name' => 'Editar pedidos', 'type' => 4],
-            ['name' => 'Eliminar pedidos', 'type' => 4],
+            ['name' => 'Cancelar pedidos', 'type' => 4],
             // 5 Facturación
             ['name' => 'Ver facturas', 'type' => 5],
             ['name' => 'Generar factura', 'type' => 5],
             ['name' => 'Anular factura', 'type' => 5],
             // 6 Reportes y Finanzas
-            ['name' => 'Ver reportes', 'type' => 6],
-            ['name' => 'Generar reportes', 'type' => 6],
+            ['name' => 'Gestionar ventas', 'type' => 6],
             ['name' => 'Gestionar gastos', 'type' => 6],
-            ['name' => 'Ver estado financiero', 'type' => 6]
+            ['name' => 'Gestionar inventario', 'type' => 6],
+            ['name' => 'Exportar reportes', 'type' => 6],
+            ['name' => 'Ver estado financiero', 'type' => 6],
+            // 7 Pagina
+            ['name' => 'Personalizar diseño', 'type' => 7],
+            ['name' => 'Activar/Inactivar Pagina', 'type' => 7],
         ]);        
 
         Company::factory()->create([
