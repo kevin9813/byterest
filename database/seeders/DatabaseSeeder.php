@@ -7,6 +7,8 @@ use App\Models\City;
 use App\Models\Company;
 use App\Models\Branch;
 use App\Models\Permission;
+use App\Models\Roles;
+use App\Models\UserBranch;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -81,6 +83,11 @@ class DatabaseSeeder extends Seeder
             'company_id' => 1,
             'name' => 'Compania 1 test',
             'address' => 'address 1 # 1'
+        ]); 
+
+        Roles::factory()->create([
+            'company_id' => 1,
+            'name' => 'Administrador',
         ]); 
 
         User::factory()->create([
