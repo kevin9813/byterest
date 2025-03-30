@@ -64,4 +64,23 @@ class UserController extends Controller
 
 
     //Post
+    public function addDeletePermissionByRole(Request $request){
+        if($request->isChecked){
+            RolePermission::insert([
+                'role_id'=> $request->roleId,
+                'permission_id'=> $request->permissionId
+            ]); 
+            $message = "Permiso creado exitosamente";
+        }else{
+            RolePermission::where('role_id', $request->roleId)
+              ->where('permission_id', $request->permissionId)
+              ->delete();
+            $message = "Permiso eliminado exitosamente";
+        }
+
+        return response()->json([
+            'status' => 200,
+            'message' => $message
+        ]);
+    }
 }

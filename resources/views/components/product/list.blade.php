@@ -49,14 +49,14 @@
                         <tbody>
                             <tr v-for="product in products" :key="product.id" class="hover:bg-base-200">
                                 <!-- Codigo -->
-                                <td class="text-center">@{{ product.id }}</td>
+                                <td class="text-center">@{{ product.codigo }}</td>
                                 <!-- Producto -->
                                 <td>
                                     <div class="flex items-center gap-4">
                                         <!-- Imagen del producto -->
                                         <div class="avatar">
                                             <div class="w-8 h-8 rounded">
-                                                <img :src="product.img ? 'assets/images_company/company_'+{{session('company_id')}}+'/'+product.img : 'assets/img/company/no-image.jpg'" alt="Producto">
+                                                <img :src="product.image ? 'assets/images_company/company_'+{{session('company_id')}}+'/'+product.image : 'assets/img/company/no-image.jpg'" alt="Producto">
                                             </div>
                                         </div>
                                         <!-- Información del producto -->
@@ -75,7 +75,7 @@
                             
                                 <!-- Estado -->
                                 <td class="text-center">
-                                    <span v-if="product.is_active" class="badge badge-success">Activo</span>
+                                    <span v-if="product.status" class="badge badge-success">Activo</span>
                                     <span v-else class="badge badge-error">Inactivo</span>
                                 </td>
                             

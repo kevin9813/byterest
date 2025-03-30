@@ -131,7 +131,7 @@
                 <div role="tablist" class="tabs tabs-lift">
                     <template v-for="(role, index) in rolesByPermissions?.roles" :key="role.id">
                         <!-- TAB HEADER -->
-                        <input role="tab" class="tab" :aria-label="role.name" type="radio" :checked="index === 0" name="tabs-radio"/>
+                        <input role="tab" class="tab" :aria-label="role.name" type="radio" :checked="index === 0" name="tabs-radio"></input>
                         <!-- TAB CONTENT -->
                         <div class="tab-content border-base-200 bg-base-100 p-6">
                             <h2 class="text-lg font-bold">@{{ role.name }}</h2>
@@ -140,9 +140,8 @@
                                 <h3 class="mt-4 text-md font-semibold">@{{ type_name }}</h3>
                                 <div v-for="permission in rolesByPermissions?.permissions.filter(p => p.type_name === type_name)" :key="permission.id">
                                 <label class="flex items-center space-x-2">
-                                    <input type="checkbox" @click="gestionarPermissions(role.id, permission.id)" :checked="role?.permissions.some(rp => rp?.id === permission?.id)">
-                                        <span>@{{ permission?.name }}</span>
-                                    </input>
+                                    <input type="checkbox" @click="gestionarPermissions(role.id, permission.id, $event.target.checked)" :checked="role?.permissions.some(rp => rp?.id === permission?.id)" class="toggle toggle-success" />
+                                    <span>@{{ permission?.name }}</span>
                                 </label>
                                 </div>
                             </div>
@@ -151,173 +150,8 @@
                 </div>
                 {{-- permisos  --}}
 
-
-                <h3 class="mt-6 font-medium">Folders</h3>
-                <div class="mt-3">
-                    <div class="grid grid-cols-1 gap-5 md:grid-cols-3 2xl:grid-cols-5">
-                        <div class="card card-border bg-base-100">
-                            <div class="card-body p-3">
-                                <div class="flex items-center gap-2">
-                                    <div class="rounded-box flex items-center p-1.5 bg-primary/5 text-primary"><span class="iconify lucide--image size-5"></span></div><span class="text-sm font-medium">My Images</span>
-                                    <div class="ms-auto">
-                                        <div class="dropdown dropdown-bottom dropdown-center">
-                                            <div tabindex="0" role="button" class="btn btn-ghost btn-circle btn-sm" aria-label="Menu"><span class="iconify lucide--more-vertical size-4"></span></div>
-                                            <div tabindex="0" class="dropdown-content bg-base-100 rounded-box mt-2 w-52 shadow">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div><span class="iconify lucide--arrow-down-to-line size-4"></span>Download</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--pen-line size-4"></span>Rename</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--user-round-plus size-4"></span>Share</div>
-                                                    </li>
-                                                </ul>
-                                                <hr class="border-base-300">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div class="text-error hover:bg-error/10"><span class="iconify lucide--trash size-4"></span>Move to bin</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-base-content/70 mt-2 flex items-center text-xs">450 Files</div>
-                            </div>
-                        </div>
-                        <div class="card card-border bg-base-100">
-                            <div class="card-body p-3">
-                                <div class="flex items-center gap-2">
-                                    <div class="rounded-box flex items-center p-1.5 bg-secondary/5 text-secondary"><span class="iconify lucide--folder-archive size-5"></span></div><span class="text-sm font-medium">Archive</span>
-                                    <div class="ms-auto">
-                                        <div class="dropdown dropdown-bottom dropdown-center">
-                                            <div tabindex="0" role="button" class="btn btn-ghost btn-circle btn-sm" aria-label="Menu"><span class="iconify lucide--more-vertical size-4"></span></div>
-                                            <div tabindex="0" class="dropdown-content bg-base-100 rounded-box mt-2 w-52 shadow">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div><span class="iconify lucide--arrow-down-to-line size-4"></span>Download</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--pen-line size-4"></span>Rename</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--user-round-plus size-4"></span>Share</div>
-                                                    </li>
-                                                </ul>
-                                                <hr class="border-base-300">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div class="text-error hover:bg-error/10"><span class="iconify lucide--trash size-4"></span>Move to bin</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-base-content/70 mt-2 flex items-center text-xs">54 Files</div>
-                            </div>
-                        </div>
-                        <div class="card card-border bg-base-100">
-                            <div class="card-body p-3">
-                                <div class="flex items-center gap-2">
-                                    <div class="rounded-box flex items-center p-1.5 bg-warning/5 text-warning"><span class="iconify lucide--music size-5"></span></div><span class="text-sm font-medium">Music</span>
-                                    <div class="ms-auto">
-                                        <div class="dropdown dropdown-bottom dropdown-center">
-                                            <div tabindex="0" role="button" class="btn btn-ghost btn-circle btn-sm" aria-label="Menu"><span class="iconify lucide--more-vertical size-4"></span></div>
-                                            <div tabindex="0" class="dropdown-content bg-base-100 rounded-box mt-2 w-52 shadow">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div><span class="iconify lucide--arrow-down-to-line size-4"></span>Download</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--pen-line size-4"></span>Rename</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--user-round-plus size-4"></span>Share</div>
-                                                    </li>
-                                                </ul>
-                                                <hr class="border-base-300">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div class="text-error hover:bg-error/10"><span class="iconify lucide--trash size-4"></span>Move to bin</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-base-content/70 mt-2 flex items-center text-xs">874 Files</div>
-                            </div>
-                        </div>
-                        <div class="card card-border bg-base-100">
-                            <div class="card-body p-3">
-                                <div class="flex items-center gap-2">
-                                    <div class="rounded-box flex items-center p-1.5 bg-info/5 text-info"><span class="iconify lucide--video size-5"></span></div><span class="text-sm font-medium">Videos</span>
-                                    <div class="ms-auto">
-                                        <div class="dropdown dropdown-bottom dropdown-center">
-                                            <div tabindex="0" role="button" class="btn btn-ghost btn-circle btn-sm" aria-label="Menu"><span class="iconify lucide--more-vertical size-4"></span></div>
-                                            <div tabindex="0" class="dropdown-content bg-base-100 rounded-box mt-2 w-52 shadow">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div><span class="iconify lucide--arrow-down-to-line size-4"></span>Download</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--pen-line size-4"></span>Rename</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--user-round-plus size-4"></span>Share</div>
-                                                    </li>
-                                                </ul>
-                                                <hr class="border-base-300">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div class="text-error hover:bg-error/10"><span class="iconify lucide--trash size-4"></span>Move to bin</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-base-content/70 mt-2 flex items-center text-xs">125 Files</div>
-                            </div>
-                        </div>
-                        <div class="card card-border bg-base-100">
-                            <div class="card-body p-3">
-                                <div class="flex items-center gap-2">
-                                    <div class="rounded-box flex items-center p-1.5 bg-error/5 text-error"><span class="iconify lucide--shield-check size-5"></span></div><span class="text-sm font-medium">Private</span>
-                                    <div class="ms-auto">
-                                        <div class="dropdown dropdown-bottom dropdown-center">
-                                            <div tabindex="0" role="button" class="btn btn-ghost btn-circle btn-sm" aria-label="Menu"><span class="iconify lucide--more-vertical size-4"></span></div>
-                                            <div tabindex="0" class="dropdown-content bg-base-100 rounded-box mt-2 w-52 shadow">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div><span class="iconify lucide--arrow-down-to-line size-4"></span>Download</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--pen-line size-4"></span>Rename</div>
-                                                    </li>
-                                                    <li>
-                                                        <div><span class="iconify lucide--user-round-plus size-4"></span>Share</div>
-                                                    </li>
-                                                </ul>
-                                                <hr class="border-base-300">
-                                                <ul class="menu w-full p-1.5">
-                                                    <li>
-                                                        <div class="text-error hover:bg-error/10"><span class="iconify lucide--trash size-4"></span>Move to bin</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-base-content/70 mt-2 flex items-center text-xs">8 Files</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+            
             <div class="hidden xl:col-span-1 xl:block 2xl:col-span-1">
                 <div class="card bg-base-100 card-border">
                     <div class="card-body gap-0">

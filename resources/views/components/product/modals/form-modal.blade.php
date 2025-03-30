@@ -1,5 +1,5 @@
 <dialog id="my_modal_products" class="modal" v-show="isModalOpen">
-    <div class="modal-box relative">
+    <div class="modal-box relative w-11/12 max-w-5xl">
         <!-- Cerrar Modal -->
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="closeModal">✕</button>
@@ -24,24 +24,26 @@
                 <span>@{{ msg }}</span>
             </div>
 
-            <!-- Nombre -->
-            <div class="form-control">
-                <label class="label" for="name">
-                    <span class="label-text">Nombre *</span>
-                </label>
-                <input v-model="name" type="text" class="input input-bordered w-full" placeholder="Nombre" id="name">
-            </div>
-
-            <!-- Categoría -->
-            <div class="form-control">
-                <label class="label" for="category">
-                    <span class="label-text">Categoría *</span>
-                </label>
-                <select v-model="category" class="select select-bordered w-full" id="category">
-                    <option v-for="option in categories" :value="option.id">
-                        @{{ option?.name }}
-                    </option>
-                </select>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Nombre -->
+                <div class="form-control">
+                    <label class="label" for="name">
+                        <span class="label-text">Nombre *</span>
+                    </label>
+                    <input v-model="name" type="text" class="input input-bordered w-full" placeholder="Nombre" id="name">
+                </div>
+    
+                <!-- Categoría -->
+                <div class="form-control">
+                    <label class="label" for="category">
+                        <span class="label-text">Categoría *</span>
+                    </label>
+                    <select v-model="category" class="select select-bordered w-full" id="category">
+                        <option v-for="option in categories" :value="option.id">
+                            @{{ option?.name }}
+                        </option>
+                    </select>
+                </div>
             </div>
 
             <!-- Descripción -->

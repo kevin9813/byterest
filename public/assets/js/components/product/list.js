@@ -113,8 +113,6 @@ const app = Vue.createApp({
                 if (image.value){ formData.append("image", image.value); }
                 if (is_update.value){ formData.append("id", product_id.value); }
 
-                
-            
                 try {
                     const data = await Global.post('/product/file', formData);
                     if(data.status == 200){
@@ -139,8 +137,8 @@ const app = Vue.createApp({
                 category.value =  data.category_id;
                 description.value =  data.description;
                 price.value =  data.price;
-                active.value = (data.is_active) ? true : false;
-                imagePreview.value = data.img;
+                active.value = (data.status) ? true : false;
+                imagePreview.value = data.image;
                 product_id.value = data.id;
             }
             const modal = document.getElementById('my_modal_products');

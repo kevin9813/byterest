@@ -48,12 +48,12 @@ class ProductsController extends Controller
                 $product = new Product;
                 $type = "Creado";
             }
+            $product->codigo = 1;
             $product->name = $request->name;
             $product->description = $request->description;
             $product->category_id = $request->category;
             $product->price = Intval($request->price);
-            $product->is_active = ($request->active)? 1 : 0;
-            $product->branch_id = session('branch_id');
+            $product->status = ($request->active)? 1 : 0;
             $product->company_id = session('company_id');
             
             
@@ -61,7 +61,7 @@ class ProductsController extends Controller
                 $imageHelper = new ImageHelper();
                 $path = 'assets/images_company/company_'.session('company_id'); // Carpeta donde se guardará la imagen
                 $imageName = $imageHelper->resizeAndSaveImage($request->image, $path, width: 600);
-                $product->img =$imageName;
+                $product->image =$imageName;
             }
             $product->save();
             DB::commit();

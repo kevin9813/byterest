@@ -41,8 +41,11 @@ const Global = (() => {
         toUpperCase: (text) => text ? text.toUpperCase() : '',
         toLowerCase: (text) => text ? text.toLowerCase() : '',
         capitalize: (text) => text ? text.charAt(0).toUpperCase() + text.slice(1).toLowerCase() : '',
-        formatNumber: (value) => value ?  new Intl.NumberFormat('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(value) : "0", 
-        
+        formatNumber: (value) => value ?  new Intl.NumberFormat('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(value) : "0",
+
+        //Alertas swal
+        swalAlertBasic(icon, title, text){ Swal.fire({ icon: icon, title: title, text: text}); },
+        swalAlertLoading(title = "Cargando...", text = 'Por favor, espere...'){ Swal.fire({ title: title, text: text, allowOutsideClick: false, didOpen: () => { Swal.showLoading(); }}); }, 
     };
 
     return {

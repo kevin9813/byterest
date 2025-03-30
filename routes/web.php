@@ -33,7 +33,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get("/", [UserController::class, "viewPermission"]); //permission
         Route::get("/list", [GeneralController::class, "getPermission"]); //permission
         Route::get("/by-role", [UserController::class, "getRolesWithPermissions"]); //Permission by role
+
+        Route::post("/addAndDelete", [UserController::class, "addDeletePermissionByRole"]); //Agregar eliminar permisos
     });
+
 
     //Users
     Route::prefix("general")->group(function () {

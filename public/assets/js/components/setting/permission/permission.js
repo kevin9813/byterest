@@ -17,9 +17,22 @@ const app = Vue.createApp({
             }
         };
 
-        const gestionarPermissions = async (permission_id, role_id) => {
-            console.log(permission_id);
-            console.log(role_id);
+        const gestionarPermissions = async (roleId, permissionId, isChecked) => {
+            Global.utils.swalAlertLoading();
+            try {
+                const dataSend = {
+                    "permissionId": permissionId, "roleId": roleId, "isChecked": isChecked
+                };
+                const data = await Global.post('/permission/addAndDelete', dataSend);
+                Global.utils.swalAlertBasic('success', 'Permiso', data.message);
+            } catch (error) {
+                console.error("Error al obtener la empresa:", error);
+            }
+            
+
+            console.log(permissionId);
+            console.log(roleId);
+            console.log(isChecked);
         };
        
 

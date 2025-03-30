@@ -57,7 +57,10 @@ class GeneralController extends Controller
 
     //Get categories
     public function categoriesByCompany(){
-        return Category::whereIn('company_id', [1,session('company_id')])->get();
+        return Category::select('id', 'name')
+        ->where('company_id', session('company_id'))
+        ->orWhere('is_global', true)
+        ->get();
     }
 
     //Get permission
