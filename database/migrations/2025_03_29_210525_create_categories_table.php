@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->string('name');
+            $table->foreignId('company_id')->nullable()->constrained()->cascadeOnDelete();
             $table->boolean('status')->default(true);
-            $table->timestamps();
+            $table->boolean('is_global')->default(false);
         });
     }
 

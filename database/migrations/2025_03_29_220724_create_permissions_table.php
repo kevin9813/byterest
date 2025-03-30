@@ -15,6 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->integer('type');
+            $table->string('type_name');
+
         });
     }
 

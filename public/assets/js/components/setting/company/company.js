@@ -4,10 +4,7 @@ const app = Vue.createApp({
     setup() {
         const isLoading = Vue.ref(true); // Inicia el cargando
         const company = Vue.ref(null); 
-        const navItems = Vue.ref(["active", "", ""]);
-        const tabItems = Vue.ref(["active show", "", ""]);
-
-
+       
         const fetchCompany = async () => {
             try {
                 const data = await Global.get('/company/detail');
@@ -19,25 +16,14 @@ const app = Vue.createApp({
             }
         };
 
-        const navActive = (activeIndex) => {
-            navItems.value = navItems.value.map((_, index) =>
-                index === activeIndex ? "active" : ""
-            );
-            tabItems.value = tabItems.value.map((_, index) =>
-                index === activeIndex ? "active show" : ""
-            );
-        }
 
         Vue.onMounted(() => {
             fetchCompany();
         });
 
         return {
-            navActive,
             isLoading,
-            company,
-            navItems,
-            tabItems, 
+            company, 
         };
     }
 });

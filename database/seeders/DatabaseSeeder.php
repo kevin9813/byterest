@@ -27,43 +27,43 @@ class DatabaseSeeder extends Seeder
 
         // Permisos
         $permissions = [
-            ['name' => 'Permisos válidos en todas las sucursales', 'type' => 0],
-            // 1 Restaurantes y Sucursales
-            ['name' => 'Ver compañia', 'type' => 1], 
-            ['name' => 'Editar compañia', 'type' => 1],
-            ['name' => 'Ver sucursales', 'type' => 1],
-            ['name' => 'Crear sucursal', 'type' => 1],
-            ['name' => 'Editar sucursal', 'type' => 1],
-            ['name' => 'Eliminar sucursal', 'type' => 1],
+            ['name' => 'Permisos válidos en todas las sucursales', 'type' => 0, 'type_name' => 'General'],
+            // 1 Compañia y Sucursales
+            ['name' => 'Ver compañia', 'type' => 1, 'type_name' => 'Compañia y Sucursales'], 
+            ['name' => 'Editar compañia', 'type' => 1, 'type_name' => 'Compañia y Sucursales'],
+            ['name' => 'Ver sucursales', 'type' => 1, 'type_name' => 'Compañia y Sucursales'],
+            ['name' => 'Crear sucursal', 'type' => 1, 'type_name' => 'Compañia y Sucursales'],
+            ['name' => 'Editar sucursal', 'type' => 1, 'type_name' => 'Compañia y Sucursales'],
+            ['name' => 'Eliminar sucursal', 'type' => 1, 'type_name' => 'Compañia y Sucursales'],
             // 2 Usuarios y Roles
-            ['name' => 'Ver usuarios', 'type' => 2],
-            ['name' => 'Editar usuarios', 'type' => 2],
-            ['name' => 'Eliminar usuarios', 'type' => 2],
-            ['name' => 'Asignar roles', 'type' => 2],
-            ['name' => 'Administrar roles', 'type' => 2],
+            ['name' => 'Ver usuarios', 'type' => 2, 'type_name' => 'Usuarios y Roles'],
+            ['name' => 'Editar usuarios', 'type' => 2, 'type_name' => 'Usuarios y Roles'],
+            ['name' => 'Eliminar usuarios', 'type' => 2, 'type_name' => 'Usuarios y Roles'],
+            ['name' => 'Asignar roles', 'type' => 2, 'type_name' => 'Usuarios y Roles'],
+            ['name' => 'Administrar roles', 'type' => 2, 'type_name' => 'Usuarios y Roles'],
             // 3 Productos y Menús
-            ['name' => 'Ver productos', 'type' => 3],
-            ['name' => 'Crear productos', 'type' => 3],
-            ['name' => 'Editar productos', 'type' => 3],
-            ['name' => 'Eliminar productos', 'type' => 3],
-            ['name' => 'Administrar categorías', 'type' => 3],
+            ['name' => 'Ver productos', 'type' => 3, 'type_name' => 'Productos y Menús'],
+            ['name' => 'Crear productos', 'type' => 3, 'type_name' => 'Productos y Menús'],
+            ['name' => 'Editar productos', 'type' => 3, 'type_name' => 'Productos y Menús'],
+            ['name' => 'Eliminar productos', 'type' => 3, 'type_name' => 'Productos y Menús'],
+            ['name' => 'Administrar categorías', 'type' => 3, 'type_name' => 'Productos y Menús'],
             // 4 Pedidos
-            ['name' => 'Ver pedidos', 'type' => 4],
-            ['name' => 'Editar pedidos', 'type' => 4],
-            ['name' => 'Cancelar pedidos', 'type' => 4],
+            ['name' => 'Ver pedidos', 'type' => 4, 'type_name' => 'Pedidos'],
+            ['name' => 'Editar pedidos', 'type' => 4, 'type_name' => 'Pedidos'],
+            ['name' => 'Cancelar pedidos', 'type' => 4, 'type_name' => 'Pedidos'],
             // 5 Facturación
-            ['name' => 'Ver facturas', 'type' => 5],
-            ['name' => 'Generar factura', 'type' => 5],
-            ['name' => 'Anular factura', 'type' => 5],
+            ['name' => 'Ver facturas', 'type' => 5, 'type_name' => 'Facturación'],
+            ['name' => 'Generar factura', 'type' => 5, 'type_name' => 'Facturación'],
+            ['name' => 'Anular factura', 'type' => 5, 'type_name' => 'Facturación'],
             // 6 Reportes y Finanzas
-            ['name' => 'Gestionar ventas', 'type' => 6],
-            ['name' => 'Gestionar gastos', 'type' => 6],
-            ['name' => 'Gestionar inventario', 'type' => 6],
-            ['name' => 'Exportar reportes', 'type' => 6],
-            ['name' => 'Ver estado financiero', 'type' => 6],
+            ['name' => 'Gestionar ventas', 'type' => 6, 'type_name' => 'Reportes y Finanzas'],
+            ['name' => 'Gestionar gastos', 'type' => 6, 'type_name' => 'Reportes y Finanzas'],
+            ['name' => 'Gestionar inventario', 'type' => 6, 'type_name' => 'Reportes y Finanzas'],
+            ['name' => 'Exportar reportes', 'type' => 6, 'type_name' => 'Reportes y Finanzas'],
+            ['name' => 'Ver estado financiero', 'type' => 6, 'type_name' => 'Reportes y Finanzas'],
             // 7 Página
-            ['name' => 'Personalizar diseño', 'type' => 7],
-            ['name' => 'Activar/Inactivar Página', 'type' => 7],
+            ['name' => 'Personalizar diseño', 'type' => 7, 'type_name' => 'Página'],
+            ['name' => 'Activar/Inactivar Página', 'type' => 7, 'type_name' => 'Página'],
         ];
         foreach ($permissions as $permission) {
             Permission::create($permission);
@@ -91,8 +91,8 @@ class DatabaseSeeder extends Seeder
         // Rol
         Roles::create([
             'id' => 1,
-            'company_id' => 1,
             'name' => 'Administrador',
+            'is_global' => 1
         ]); 
 
         // Usuario

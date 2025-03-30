@@ -22,7 +22,7 @@ Route::get('/logout', [LoginController::class, 'logout']); // logout
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [GeneralController::class, 'dashboard']); // Dashboard
-
+    
     //Users
     Route::prefix("user")->group(function () {
         Route::post("create", [LoginController::class, "createUser"]); //Create user
@@ -32,11 +32,13 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix("permission")->group(function () {
         Route::get("/", [UserController::class, "viewPermission"]); //permission
         Route::get("/list", [GeneralController::class, "getPermission"]); //permission
+        Route::get("/by-role", [UserController::class, "getRolesWithPermissions"]); //Permission by role
     });
 
     //Users
     Route::prefix("general")->group(function () {
         Route::get("categories", [GeneralController::class, "categoriesByCompany"]); //Create user
+        Route::get("roles", [UserController::class, "getRolesByCompany"]); //Create user
     });
 
     //Productos

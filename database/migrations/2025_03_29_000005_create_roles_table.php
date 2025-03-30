@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('company_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->boolean('is_global')->default(false);
         });
     }
 

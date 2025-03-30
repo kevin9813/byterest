@@ -15,10 +15,7 @@ class SettingPageController extends Controller
 
         echo view("components.setting.page.config-page", []);
 
-        $scripts = [
-            "components/setting/page/config-page",
-        ];
-        GeneralController::renderFooter($scripts, "", 2, 2);
+        GeneralController::renderFooter(["components/setting/page/config-page"], "", 2, 2);
     }
 
 }
