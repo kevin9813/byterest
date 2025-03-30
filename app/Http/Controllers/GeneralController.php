@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 //Models
 Use App\Models\Category;
+use App\Models\Permission;
 
 class GeneralController extends Controller
 {
@@ -42,23 +43,26 @@ class GeneralController extends Controller
 
     public function dashboard(){
         $this->renderHeader([
-            "usuario" => "Prueba",
             "tittle" => "Home",
             "submodule" => 1
         ]);
+        echo view("components.home.dashboard", []);
 
-        echo view("components.home.dashboard", [
-            ]);
-
-        $scripts = [
-        ];
+        $scripts = [];
         $this->renderFooter($scripts, "", 2, 2);
     }
 
 
     //Funciones Generales
+
+    //Get categories
     public function categoriesByCompany(){
         return Category::whereIn('company_id', [1,session('company_id')])->get();
+    }
+
+    //Get permission
+    public function getPermission(){
+        return  Permission::orderBy('type')->get()->groupBy('type');
     }
     
 

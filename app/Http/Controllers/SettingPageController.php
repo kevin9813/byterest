@@ -9,7 +9,6 @@ class SettingPageController extends Controller
 
     public function index(){ ///View
         GeneralController::renderHeader([
-            "usuario" => "",
             "tittle" => "Page",
             "submodule" => 1
         ]);

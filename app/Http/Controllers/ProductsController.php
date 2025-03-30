@@ -16,7 +16,6 @@ class ProductsController extends Controller
 {
     public function index(){
         GeneralController::renderHeader([
-            "usuario" => "",
             "tittle" => "Products",
             "submodule" => 1
         ]);

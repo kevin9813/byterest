@@ -9,7 +9,7 @@ class Branch extends Model
 {
     //
     use HasFactory;
-    protected $table = "branchs";
+    protected $table = "branches";
     protected $primaryKey = 'id';
     public $timestamps = false;
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\SettingPageController;
+use App\Http\Controllers\UserController;
 
 
 Route::middleware('web')->group(function () {
@@ -25,6 +26,12 @@ Route::middleware(['auth'])->group(function () {
     //Users
     Route::prefix("user")->group(function () {
         Route::post("create", [LoginController::class, "createUser"]); //Create user
+    });
+
+    //Permission
+    Route::prefix("permission")->group(function () {
+        Route::get("/", [UserController::class, "viewPermission"]); //permission
+        Route::get("/list", [GeneralController::class, "getPermission"]); //permission
     });
 
     //Users

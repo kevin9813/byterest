@@ -19,19 +19,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Ciudades 
+        $cities = ['Cali', 'Bogotá', 'Jamundi', 'Medellín', 'Barranquilla', 'Cartagena', 'Palmira'];
+        foreach ($cities as $city) {
+            City::create(['name' => $city]);
+        }
 
-       
-        City::factory()->create([
-            ['name' => 'Cali'],
-            ['name' => 'Bogotá'],
-            ['name' => 'Jamundi'],
-            ['name' => 'Medellín'],
-            ['name' => 'Barranquilla'],
-            ['name' => 'Cartagena'],
-            ['name' => 'Palmira']
-        ]); 
-
-        Permission::factory()->createMany([
+        // Permisos
+        $permissions = [
             ['name' => 'Permisos válidos en todas las sucursales', 'type' => 0],
             // 1 Restaurantes y Sucursales
             ['name' => 'Ver compañia', 'type' => 1], 
@@ -42,8 +37,8 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Eliminar sucursal', 'type' => 1],
             // 2 Usuarios y Roles
             ['name' => 'Ver usuarios', 'type' => 2],
-            ['name' => 'Editar usuarios', 'type' => 4],
-            ['name' => 'Eliminar usuarios', 'type' => 4],
+            ['name' => 'Editar usuarios', 'type' => 2],
+            ['name' => 'Eliminar usuarios', 'type' => 2],
             ['name' => 'Asignar roles', 'type' => 2],
             ['name' => 'Administrar roles', 'type' => 2],
             // 3 Productos y Menús
@@ -66,12 +61,17 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Gestionar inventario', 'type' => 6],
             ['name' => 'Exportar reportes', 'type' => 6],
             ['name' => 'Ver estado financiero', 'type' => 6],
-            // 7 Pagina
+            // 7 Página
             ['name' => 'Personalizar diseño', 'type' => 7],
-            ['name' => 'Activar/Inactivar Pagina', 'type' => 7],
-        ]);        
+            ['name' => 'Activar/Inactivar Página', 'type' => 7],
+        ];
+        foreach ($permissions as $permission) {
+            Permission::create($permission);
+        }
+       
 
-        Company::factory()->create([
+         // Compañía
+         Company::create([
             'id' => 1,
             'name' => 'Compania 1 test',
             'slogan' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
@@ -79,22 +79,36 @@ class DatabaseSeeder extends Seeder
             'email' => 'email@email.com'
         ]); 
 
-        Branch::factory()->create([
+         // Sucursal
+         Branch::create([
+            'id' => 1,
             'company_id' => 1,
+            'city_id' => 1,
             'name' => 'Compania 1 test',
             'address' => 'address 1 # 1'
         ]); 
 
-        Roles::factory()->create([
+        // Rol
+        Roles::create([
+            'id' => 1,
             'company_id' => 1,
             'name' => 'Administrador',
         ]); 
 
-        User::factory()->create([
+        // Usuario
+        User::create([
+            'id' => 1,
             'name' => 'Test User',
             'usuario' => 'kevin13',
             'password' => '$2y$12$wWYkIN0fpQLnVFygCc2OkOKoE3zecKohKHZCxedjh2wejmswkkUU.',
             'company_id' => 1,
+            'role_id' => 1,
         ]); 
+
+        // Asignar usuario a sucursal
+        UserBranch::create([
+            'user_id' => 1,
+            'branch_id' => 1,
+        ]);
     }
 }

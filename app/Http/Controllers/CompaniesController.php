@@ -14,7 +14,6 @@ class CompaniesController extends Controller
 {
     public function index(){
         GeneralController::renderHeader([
-            "usuario" => "",
             "tittle" => "Company",
             "submodule" => 1
         ]);
@@ -28,6 +27,7 @@ class CompaniesController extends Controller
     }
     
     public function detail(){
+
         $company = Company::select('id', 'name', 'nit', 'slogan')
         ->with(['branches', 'branches.city'])
         ->where('id', session('company_id'))

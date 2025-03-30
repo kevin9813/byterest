@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lopez</title>
+    <title>{{$tittle}} | Byterest</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="{{ asset('assets/css/plugins/daiysiui5.css') }}" rel="stylesheet" type="text/css" />
@@ -92,11 +92,27 @@
                 <br>
                 <ul class="menu bg-base-200 rounded-box w-56">
                     <li>
-                        <h2 class="menu-title">Usuario</h2>
+                        <h3 class="menu-title">Usuarios</h3>
                         <ul>
                             <li>
                                 <a href="/profile" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
-                                    <i class="material-icons text-3xl">person</i> Perfil</a>
+                                    <i class="material-icons text-3xl">group</i> Usuarios</a>
+                            </li>
+                            <li>
+                                <a href="/permission" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
+                                    <i class="material-icons text-3xl">manage_accounts</i> Permisos</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <ul class="menu bg-base-200 rounded-box w-56">
+                    <li>
+                        <h3 class="menu-title">{{session('user_name')}}</h3>
+                        <ul>
+                            <li>
+                                <a href="/profile" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
+                                    <i class="material-icons text-3xl">person</i> Mi usuario</a>
                             </li>
                             <li>
                                 <a href="/logout" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">

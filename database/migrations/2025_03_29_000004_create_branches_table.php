@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('address');
             $table->string('whatsapp')->nullable();
