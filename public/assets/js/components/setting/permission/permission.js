@@ -4,7 +4,14 @@ const app = Vue.createApp({
     setup() {
         const isLoading = Vue.ref(true); // Inicia el cargando
         const rolesByPermissions = Vue.ref(null); 
+        const RolesWithUser = Vue.ref([]); 
 
+        // Cargar datos al iniciar
+        const loadData = async () => {
+            isLoading.value = true;
+            await Promise.all([fetchCompany(), fetchRolesWithUser()]);
+            isLoading.value = false;
+        };
 
         const fetchCompany = async () => {
             try {
@@ -12,8 +19,15 @@ const app = Vue.createApp({
                 rolesByPermissions.value = data;
             } catch (error) {
                 console.error("Error:", error);
-            }finally {
-                isLoading.value = false; // Finaliza el cargando
+            }
+        };
+
+        const fetchRolesWithUser = async () => {
+            try {
+                const data = await Global.get('/general/roles');
+                RolesWithUser.value = data;
+            } catch (error) {
+                console.error("Error:", error);
             }
         };
 
@@ -32,13 +46,14 @@ const app = Vue.createApp({
        
 
         Vue.onMounted(() => {
-            fetchCompany();
+            loadData();
         });
 
         return {
             gestionarPermissions,
             isLoading,
-            rolesByPermissions
+            rolesByPermissions,
+            RolesWithUser
         };
     }
 });

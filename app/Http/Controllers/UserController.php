@@ -28,7 +28,8 @@ class UserController extends Controller
 
     //Get
     public function getRolesWithUserCount(){
-        return  Roles::withCount('users')->where('company_id', session('company_id'))
+        return  Roles::withCount('users')
+            ->where('company_id', session('company_id'))
             ->orWhere('is_global', true)
             ->get();
     }

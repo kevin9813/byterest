@@ -23,12 +23,12 @@
                                                 <p class="font-medium">Roles</p>
                                                 <button class="btn btn-success btn-outline btn-sm border-transparent">Crear</button>
                                             </div>
-                                            <div class="card card-border bg-primary/5 border-primary/10 mt-3">
+                                            <div v-for="rolesWithUser in RolesWithUser" class="card card-border bg-primary/5 border-primary/10 mt-3">
                                                 <div class="card-body p-4">
                                                     <div class="flex items-center gap-2.5">
                                                         <span class="iconify lucide--hard-drive text-primary size-4.5"></span>
-                                                        <span class="font-medium">Administrador</span>
-                                                        <span class="text-primary ms-auto text-sm font-medium">20 Usuario</span>
+                                                        <span class="font-medium">@{{ rolesWithUser.name }}</span>
+                                                        <span class="text-primary ms-auto text-sm font-medium">@{{ rolesWithUser.users_count }} Usuario</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,22 +72,20 @@
                             <p class="font-medium">Roles</p>
                             <button class="btn btn-success btn-outline btn-sm border-transparent">Crear</button>
                         </div>
-                        <div class="card card-border bg-primary/5 border-primary/10 mt-3">
+                        <div v-for="rolesWithUser in RolesWithUser" class="card card-border bg-primary/5 border-primary/10 mt-3">
                             <div class="card-body p-4">
                                 <div class="flex items-center gap-2.5">
                                     <span class="iconify lucide--hard-drive text-primary size-4.5"></span>
-                                    <span class="font-medium">Administrador</span>
-                                    <span class="text-primary ms-auto text-sm font-medium">20 Usuario</span>
+                                    <span class="font-medium">@{{ rolesWithUser.name }}</span>
+                                    <span class="text-primary ms-auto text-sm font-medium">@{{ rolesWithUser.users_count }} Usuario</span>
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="card card-border bg-primary/5 border-primary/10 mt-3">
-                            <div class="card-body p-4">
-                                <div class="flex items-center gap-2.5"><span class="iconify lucide--hard-drive text-primary size-4.5"></span><span class="text-primary font-medium">Local Storage</span><span class="text-primary ms-auto text-sm font-medium">64%</span></div>
-                                <div class="mt-4 flex items-center justify-between gap-2 text-sm"><span class="font-medium">162 GB</span><span class="text-base-content/80 text-xs">Used of 250 GB</span></div>
-                                <progress max="250" value="160" class="progress progress-primary mt-1 h-1.5"></progress>
-                            </div>
-                        </div> --}}
+                        <br>
+                        <div role="alert" class="alert alert-info alert-soft">
+                            <i class="material-icons text-3xl">info</i>
+                            <span>@{{ RolesWithUser.length }} de 6 roles disponibles</span>
+                        </div>
                     </div>
                 </div>
             </div>
