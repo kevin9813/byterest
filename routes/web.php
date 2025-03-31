@@ -37,7 +37,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post("/addAndDelete", [UserController::class, "addDeletePermissionByRole"]); //Agregar eliminar permisos
     });
 
-
     //Users
     Route::prefix("general")->group(function () {
         Route::get("categories", [GeneralController::class, "categoriesByCompany"]); //Create user
@@ -47,8 +46,8 @@ Route::middleware(['auth'])->group(function () {
     //Productos
     Route::prefix("product")->group(function () {
         Route::get("/", [ProductsController::class, "index"]); //List Product view
-        Route::get("list", [ProductsController::class, "listByCompany"]); //List Product view
 
+        Route::post("list", [ProductsController::class, "listByCompany"]); //List Product view
         Route::post("/file", [ProductsController::class, "addUpdateProducts"]); //Add Update Products
     });
 

@@ -9,6 +9,7 @@ use App\Models\Branch;
 use App\Models\Permission;
 use App\Models\Roles;
 use App\Models\UserBranch;
+use App\Models\Category;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -71,7 +72,7 @@ class DatabaseSeeder extends Seeder
        
 
          // Compañía
-         Company::create([
+        Company::create([
             'id' => 1,
             'name' => 'Compania 1 test',
             'slogan' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
@@ -79,13 +80,20 @@ class DatabaseSeeder extends Seeder
             'email' => 'email@email.com'
         ]); 
 
-         // Sucursal
-         Branch::create([
+        // Sucursal
+        Branch::create([
             'id' => 1,
             'company_id' => 1,
             'city_id' => 1,
             'name' => 'Compania 1 test',
             'address' => 'address 1 # 1'
+        ]); 
+
+        // Categoria
+        Category::create([
+            'id' => 1,
+            'name' => 'General',
+            'is_global' => 1
         ]); 
 
         // Rol

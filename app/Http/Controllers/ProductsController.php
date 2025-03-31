@@ -14,6 +14,7 @@ use App\Models\Product;
 
 class ProductsController extends Controller
 {
+    //Vistas
     public function index(){
         GeneralController::renderHeader([
             "tittle" => "Products",
@@ -29,10 +30,13 @@ class ProductsController extends Controller
         GeneralController::renderFooter($scripts, "", 2, 2);
     }
 
-    public function listByCompany(){
+    //Get
+
+    //Post
+    public function listByCompany(Request $request){
         $list = Product::with(['category'])
         ->where('company_id', session('company_id'))
-        ->get();
+        ->paginate(15);
 
         return $list;
     }
@@ -48,8 +52,8 @@ class ProductsController extends Controller
                 $product = new Product;
                 $type = "Creado";
             }
-            $product->codigo = 1;
             $product->name = $request->name;
+            $product->code = $request->code;
             $product->description = $request->description;
             $product->category_id = $request->category;
             $product->price = Intval($request->price);

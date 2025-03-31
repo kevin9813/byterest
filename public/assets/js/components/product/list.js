@@ -3,6 +3,7 @@ import Global from "../controllers/global.js";
 const app = Vue.createApp({
     setup() {
         const isLoading = Vue.ref(false); 
+        const page = Vue.ref(1);
         const products = Vue.ref([]); 
         const product = Vue.ref([]); 
         const status = Vue.ref([]); 
@@ -16,6 +17,7 @@ const app = Vue.createApp({
         const product_id = Vue.ref(''); 
         const msg = Vue.ref('');
         const name = Vue.ref(''); 
+        const code = Vue.ref(''); 
         const description = Vue.ref(''); 
         const price = Vue.ref(''); 
         const active = Vue.ref(true); 
@@ -47,8 +49,14 @@ const app = Vue.createApp({
         };
 
         const fetchList = async () => {
+            var url = "/product/list";
+
+            if (page.value != 1) {
+                url += "?page=" + page.value;
+            }
+
             try {
-                const data = await Global.get('/product/list');
+                const data = await Global.post(url);
                 products.value = data;
             } catch (error) {
                 console.error("Error al obtener la respuesta:", error);
@@ -82,12 +90,16 @@ const app = Vue.createApp({
             isLoadingModal.value = true;
             msg.value = "";
             let hasError = false;
-
+            
             if(price.value < 100){
                 msg.value = "El precio no puede ser menor a 100.";
                 hasError = true;
             }else if(!price.value) {
                 msg.value = "El precio es obligatorio.";
+                hasError = true;
+            }
+            if (!code.value) {
+                msg.value = "El codigo es obligatorio.";
                 hasError = true;
             }
             if (!description.value) {
@@ -106,6 +118,7 @@ const app = Vue.createApp({
             if(!hasError){
                 const formData = new FormData();
                 formData.append("name", name.value);
+                formData.append("code", code.value);
                 formData.append("description", description.value); 
                 formData.append("category", category.value); 
                 formData.append("price", price.value); 
@@ -113,10 +126,13 @@ const app = Vue.createApp({
                 if (image.value){ formData.append("image", image.value); }
                 if (is_update.value){ formData.append("id", product_id.value); }
 
+                Global.utils.swalAlertLoading();
                 try {
                     const data = await Global.post('/product/file', formData);
                     if(data.status == 200){
-                       // window.location.reload();
+                        Global.utils.swalAlertBasic('success', 'Producto', data.message);
+                        await esperar(2000); // Espera 2 segundos 
+                        window.location.reload();
                     }
                     console.log(data);
                 } catch (error) {
@@ -127,7 +143,10 @@ const app = Vue.createApp({
             }
         }
 
-    
+        const changePage = (page_number) => {
+            page.value = page_number;
+            fetchList();
+        }
 
         const openModal = (update, data)=> {
             isModalOpen.value = true;  // Abre el modal
@@ -135,6 +154,7 @@ const app = Vue.createApp({
             if(is_update.value){
                 name.value =  data.name;
                 category.value =  data.category_id;
+                code.value =  data.code;
                 description.value =  data.description;
                 price.value =  data.price;
                 active.value = (data.status) ? true : false;
@@ -159,6 +179,7 @@ const app = Vue.createApp({
             formatNumber,
             handleFileUpload,
             addUpdateProduct,
+            changePage,
             //Variables
             isLoading,
             products,
@@ -174,6 +195,7 @@ const app = Vue.createApp({
             is_update,
             msg,
             name,
+            code,
             description,
             price,
             active,

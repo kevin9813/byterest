@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
-            $table->string('codigo');
+            $table->string('code');
             $table->string('name');
             $table->string('description')->nullable();
             $table->decimal('price', 15, 2);

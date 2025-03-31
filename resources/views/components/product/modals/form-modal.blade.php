@@ -47,11 +47,19 @@
             </div>
 
             <!-- Descripción -->
-            <div class="form-control">
-                <label class="label" for="description">
-                    <span class="label-text">Descripción</span>
-                </label>
-                <input v-model="description" type="text" class="input input-bordered w-full" placeholder="Descripción corta" id="description">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="form-control md:col-span-3">
+                    <label class="label" for="code">
+                        <span class="label-text">Codigo</span>
+                    </label>
+                    <input v-model="code" type="text" placeholder="Ejmp 01" minlength="1" maxlength="10"class="input input-bordered w-full" id="code">
+                </div>
+                <div class="form-control md:col-span-9">
+                    <label class="label" for="description">
+                        <span class="label-text">Descripción</span>
+                    </label>
+                    <input v-model="description" type="text" class="input input-bordered w-full" placeholder="Descripción corta" id="description">
+                </div>
             </div>
 
             <!-- Fila de Precio y Activo -->
@@ -61,7 +69,7 @@
                     <label class="label" for="price">
                         <span class="label-text">Precio</span>
                     </label>
-                    <input v-model="price" type="text" class="input input-bordered w-full" id="price">
+                    <input v-model="price" type="text" class="input input-bordered w-full" placeholder="Precio del producto" id="price">
                 </div>
 
                 <!-- Activo (Mostrar en web) -->
