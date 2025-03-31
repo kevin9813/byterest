@@ -27,8 +27,8 @@ class UserController extends Controller
 
 
     //Get
-    public function getRolesByCompany(){
-        return  Roles::where('company_id', session('company_id'))
+    public function getRolesWithUserCount(){
+        return  Roles::withCount('users')->where('company_id', session('company_id'))
             ->orWhere('is_global', true)
             ->get();
     }
@@ -70,7 +70,7 @@ class UserController extends Controller
                 'role_id'=> $request->roleId,
                 'permission_id'=> $request->permissionId
             ]); 
-            $message = "Permiso creado exitosamente";
+            $message = "Permiso asignado exitosamente";
         }else{
             RolePermission::where('role_id', $request->roleId)
               ->where('permission_id', $request->permissionId)

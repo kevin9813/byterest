@@ -12,6 +12,7 @@ use App\Models\User;
 
 class CompaniesController extends Controller
 {
+    //Views
     public function index(){
         GeneralController::renderHeader([
             "tittle" => "Company",
@@ -26,6 +27,7 @@ class CompaniesController extends Controller
         GeneralController::renderFooter($scripts, "", 2, 2);
     }
     
+    //Get
     public function detail(){
 
         $company = Company::select('id', 'name', 'nit', 'slogan')

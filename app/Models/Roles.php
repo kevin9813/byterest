@@ -12,4 +12,9 @@ class Roles extends Model
     protected $table = "roles";
     protected $primaryKey = 'id';
     public $timestamps = false;
+    
+    
+    public function users(){
+        return $this->belongsTo(User::class, 'role_id', 'id',);
+    }
 }

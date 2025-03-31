@@ -14,20 +14,15 @@ use App\Models\Product;
 
 class ProductsController extends Controller
 {
-    //Vistas
+    //Views
     public function index(){
         GeneralController::renderHeader([
             "tittle" => "Products",
             "submodule" => 1
         ]);
 
-        echo view("components.product.list", [
-            ]);
-
-        $scripts = [
-            "components/product/list",
-        ];
-        GeneralController::renderFooter($scripts, "", 2, 2);
+        echo view("components.product.list", []);
+        GeneralController::renderFooter(["components/product/list"], "", 2, 2);
     }
 
     //Get
@@ -36,6 +31,10 @@ class ProductsController extends Controller
     public function listByCompany(Request $request){
         $list = Product::with(['category'])
         ->where('company_id', session('company_id'))
+        ->when(filled($request->state), fn($q) => $q->where('status', $request->state))
+        ->when(filled($request->code), fn($q) => $q->where('code', $request->code))
+        ->when(filled($request->category), fn($q) => $q->where('category_id', $request->category))
+        ->when(filled($request->name), fn($q) => $q->where('name', 'like', "{$request->name}%"))
         ->paginate(15);
 
         return $list;

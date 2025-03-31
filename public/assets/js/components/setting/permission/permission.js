@@ -11,28 +11,23 @@ const app = Vue.createApp({
                 const data = await Global.get('/permission/by-role');
                 rolesByPermissions.value = data;
             } catch (error) {
-                console.error("Error al obtener la empresa:", error);
+                console.error("Error:", error);
             }finally {
                 isLoading.value = false; // Finaliza el cargando
             }
         };
 
         const gestionarPermissions = async (roleId, permissionId, isChecked) => {
-            Global.utils.swalAlertLoading();
+            //Global.utils.swalAlertLoading();
             try {
                 const dataSend = {
                     "permissionId": permissionId, "roleId": roleId, "isChecked": isChecked
                 };
                 const data = await Global.post('/permission/addAndDelete', dataSend);
-                Global.utils.swalAlertBasic('success', 'Permiso', data.message);
+                Global.utils.swalAlertToast('success', data.message);
             } catch (error) {
-                console.error("Error al obtener la empresa:", error);
+                console.error("Error:", error);
             }
-            
-
-            console.log(permissionId);
-            console.log(roleId);
-            console.log(isChecked);
         };
        
 

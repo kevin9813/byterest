@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
     //Users
     Route::prefix("general")->group(function () {
         Route::get("categories", [GeneralController::class, "categoriesByCompany"]); //Create user
-        Route::get("roles", [UserController::class, "getRolesByCompany"]); //Create user
+        Route::get("roles", [UserController::class, "getRolesWithUserCount"]); //Create user
     });
 
     //Productos

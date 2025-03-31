@@ -3,7 +3,10 @@ import Global from "../controllers/global.js";
 const app = Vue.createApp({
     setup() {
         const isLoading = Vue.ref(false); 
+        const isLoadingTable = Vue.ref(false); 
         const page = Vue.ref(1);
+        const code_filter = Vue.ref(''); 
+        const name_filter = Vue.ref(''); 
         const products = Vue.ref([]); 
         const product = Vue.ref([]); 
         const status = Vue.ref([]); 
@@ -49,15 +52,27 @@ const app = Vue.createApp({
         };
 
         const fetchList = async () => {
+            isLoadingTable.value = true;
             var url = "/product/list";
 
-            if (page.value != 1) {
-                url += "?page=" + page.value;
+            if (page.value != 1) { url += "?page=" + page.value; }
+
+            let dataSend = {};
+            dataSend.state = state.value;
+            if (code_filter.value.trim()) {
+                dataSend.code = code_filter.value;
+            }
+            if (name_filter.value.trim()) {
+                dataSend.name = name_filter.value;
+            }
+            if (category.value > 0) {
+                dataSend.category = category.value;
             }
 
             try {
-                const data = await Global.post(url);
+                const data = await Global.post(url, dataSend);
                 products.value = data;
+                isLoadingTable.value = false;
             } catch (error) {
                 console.error("Error al obtener la respuesta:", error);
             }
@@ -176,12 +191,16 @@ const app = Vue.createApp({
 
         return {
             //Functions
+            fetchList,
             formatNumber,
             handleFileUpload,
             addUpdateProduct,
             changePage,
             //Variables
+            isLoadingTable,
             isLoading,
+            code_filter,
+            name_filter,
             products,
             product,
             status,

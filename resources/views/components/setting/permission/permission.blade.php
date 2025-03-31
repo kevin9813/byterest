@@ -25,99 +25,12 @@
                                             </div>
                                             <div class="card card-border bg-primary/5 border-primary/10 mt-3">
                                                 <div class="card-body p-4">
-                                                    <div class="flex items-center gap-2.5"><span class="iconify lucide--hard-drive text-primary size-4.5"></span><span class="text-primary font-medium">Local Storage</span><span class="text-primary ms-auto text-sm font-medium">64%</span></div>
-                                                    <div class="mt-4 flex items-center justify-between gap-2 text-sm"><span class="font-medium">162 GB</span><span class="text-base-content/80 text-xs">Used of 250 GB</span></div>
-                                                    <progress max="250" value="160" class="progress progress-primary mt-1 h-1.5"></progress>
-                                                </div>
-                                            </div>
-                                            <p class="mt-6 text-sm font-medium">In Process</p>
-                                            <div class="mt-3">
-                                                <div class="card card-border border-base-300">
-                                                    <div class="card-body px-4 pt-3 pb-2">
-                                                        <div>
-                                                            <div class="flex items-center justify-between"><span class="font-medium max-sm:text-sm">Feedback video (.mp4)</span>
-                                                                <div class="inline-flex gap-2"><span class="iconify lucide--pause size-4"></span><span class="iconify lucide--x-circle text-error size-4"></span></div>
-                                                            </div>
-                                                            <div class="mt-1 flex items-center justify-between text-xs"><span>70%</span><span>1.2 GiB</span></div>
-                                                            <progress class="progress progress-success h-1 align-super" max="100" value="70"></progress>
-                                                        </div>
-                                                        <div>
-                                                            <div class="flex items-center justify-between"><span class="font-medium max-sm:text-sm">Company revenue (.xlsx)</span>
-                                                                <div class="inline-flex gap-2"><span class="iconify lucide--play size-4"></span><span class="iconify lucide--x-circle text-error size-4"></span></div>
-                                                            </div>
-                                                            <div class="mt-1 flex items-center justify-between text-xs"><span>20%</span><span>12 MiB</span></div>
-                                                            <progress class="progress progress-error h-1 align-super" max="100" value="20"></progress>
-                                                        </div>
+                                                    <div class="flex items-center gap-2.5">
+                                                        <span class="iconify lucide--hard-drive text-primary size-4.5"></span>
+                                                        <span class="font-medium">Administrador</span>
+                                                        <span class="text-primary ms-auto text-sm font-medium">20 Usuario</span>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <p class="mt-6 text-sm font-medium">File Activity</p>
-                                            <div class="mt-3 overflow-hidden">
-                                                <ul class="timeline timeline-vertical timeline-snap-icon timeline-hr-sm -ms-[100%] ps-10">
-                                                    <li>
-                                                        <div class="timeline-middle">
-                                                            <div class="bg-primary/10 text-primary flex items-center rounded-full p-2"><span class="iconify lucide--pencil size-4"></span></div>
-                                                        </div>
-                                                        <div class="timeline-end my-2.5 w-full px-4">
-                                                            <div class="flex items-center justify-between"><span class="text-sm font-medium">Olivia Duncan</span><span class="text-base-content/60 text-xs">Just Now</span></div>
-                                                            <p class="text-base-content/70 mt-0.5 text-xs">Edited package.json in e-commerce</p>
-                                                        </div>
-                                                        <hr>
-                                                    </li>
-                                                    <li>
-                                                        <hr>
-                                                        <div class="timeline-middle">
-                                                            <div class="bg-primary/10 text-primary flex items-center rounded-full p-2"><span class="iconify lucide--arrow-up-from-line size-4"></span></div>
-                                                        </div>
-                                                        <div class="timeline-end my-2.5 w-full px-4">
-                                                            <div class="flex items-center justify-between"><span class="text-sm font-medium">Tillie Frank</span><span class="text-base-content/60 text-xs">22 hours</span></div>
-                                                            <p class="text-base-content/70 mt-0.5 text-xs">Uploaded app.tsx file in react directory</p>
-                                                        </div>
-                                                        <hr>
-                                                    </li>
-                                                    <li>
-                                                        <hr>
-                                                        <div class="timeline-middle">
-                                                            <div class="bg-error/10 text-error flex items-center rounded-full p-2"><span class="iconify lucide--trash size-4"></span></div>
-                                                        </div>
-                                                        <div class="timeline-end my-2.5 w-full px-4">
-                                                            <div class="flex items-center justify-between"><span class="text-sm font-medium">Zaid Pope</span><span class="text-base-content/60 text-xs">3 days</span></div>
-                                                            <p class="text-base-content/70 mt-0.5 text-xs">Removed style.css &amp; images folder from root</p>
-                                                        </div>
-                                                        <hr>
-                                                    </li>
-                                                    <li>
-                                                        <hr>
-                                                        <div class="timeline-middle">
-                                                            <div class="bg-primary/10 text-primary flex items-center rounded-full p-2"><span class="iconify lucide--folder-input size-4"></span></div>
-                                                        </div>
-                                                        <div class="timeline-end my-2.5 w-full px-4">
-                                                            <div class="flex items-center justify-between"><span class="text-sm font-medium">Grover Russo</span><span class="text-base-content/60 text-xs">Week ago</span></div>
-                                                            <p class="text-base-content/70 mt-0.5 text-xs">Moved folders to inner directory</p>
-                                                        </div>
-                                                        <hr>
-                                                    </li>
-                                                    <li>
-                                                        <hr>
-                                                        <div class="timeline-middle">
-                                                            <div class="bg-success/10 text-success flex items-center rounded-full p-2"><span class="iconify lucide--folder-plus size-4"></span></div>
-                                                        </div>
-                                                        <div class="timeline-end my-2.5 w-full px-4">
-                                                            <div class="flex items-center justify-between"><span class="text-sm font-medium">Qasim Cotton</span><span class="text-base-content/60 text-xs">This month</span></div>
-                                                            <p class="text-base-content/70 mt-0.5 text-xs">Created the root project</p>
-                                                        </div>
-                                                        <hr>
-                                                    </li>
-                                                    <li>
-                                                        <hr>
-                                                        <div class="timeline-middle">
-                                                            <div class="bg-base-200 flex items-center rounded-full p-2"><span class="iconify lucide--more-horizontal size-4"></span></div>
-                                                        </div>
-                                                        <div class="timeline-end mx-5 my-2">
-                                                            <button class="btn btn-sm btn-soft btn-primary">View Full Activity</button>
-                                                        </div>
-                                                    </li>
-                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -161,100 +74,20 @@
                         </div>
                         <div class="card card-border bg-primary/5 border-primary/10 mt-3">
                             <div class="card-body p-4">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="iconify lucide--hard-drive text-primary size-4.5"></span>
+                                    <span class="font-medium">Administrador</span>
+                                    <span class="text-primary ms-auto text-sm font-medium">20 Usuario</span>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="card card-border bg-primary/5 border-primary/10 mt-3">
+                            <div class="card-body p-4">
                                 <div class="flex items-center gap-2.5"><span class="iconify lucide--hard-drive text-primary size-4.5"></span><span class="text-primary font-medium">Local Storage</span><span class="text-primary ms-auto text-sm font-medium">64%</span></div>
                                 <div class="mt-4 flex items-center justify-between gap-2 text-sm"><span class="font-medium">162 GB</span><span class="text-base-content/80 text-xs">Used of 250 GB</span></div>
                                 <progress max="250" value="160" class="progress progress-primary mt-1 h-1.5"></progress>
                             </div>
-                        </div>
-                        <p class="mt-6 text-sm font-medium">In Process</p>
-                        <div class="mt-3">
-                            <div class="card card-border border-base-300">
-                                <div class="card-body px-4 pt-3 pb-2">
-                                    <div>
-                                        <div class="flex items-center justify-between"><span class="font-medium max-sm:text-sm">Feedback video (.mp4)</span>
-                                            <div class="inline-flex gap-2"><span class="iconify lucide--pause size-4"></span><span class="iconify lucide--x-circle text-error size-4"></span></div>
-                                        </div>
-                                        <div class="mt-1 flex items-center justify-between text-xs"><span>70%</span><span>1.2 GiB</span></div>
-                                        <progress class="progress progress-success h-1 align-super" max="100" value="70"></progress>
-                                    </div>
-                                    <div>
-                                        <div class="flex items-center justify-between"><span class="font-medium max-sm:text-sm">Company revenue (.xlsx)</span>
-                                            <div class="inline-flex gap-2"><span class="iconify lucide--play size-4"></span><span class="iconify lucide--x-circle text-error size-4"></span></div>
-                                        </div>
-                                        <div class="mt-1 flex items-center justify-between text-xs"><span>20%</span><span>12 MiB</span></div>
-                                        <progress class="progress progress-error h-1 align-super" max="100" value="20"></progress>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="mt-6 text-sm font-medium">File Activity</p>
-                        <div class="mt-3 overflow-hidden">
-                            <ul class="timeline timeline-vertical timeline-snap-icon timeline-hr-sm -ms-[100%] ps-10">
-                                <li>
-                                    <div class="timeline-middle">
-                                        <div class="bg-primary/10 text-primary flex items-center rounded-full p-2"><span class="iconify lucide--pencil size-4"></span></div>
-                                    </div>
-                                    <div class="timeline-end my-2.5 w-full px-4">
-                                        <div class="flex items-center justify-between"><span class="text-sm font-medium">Olivia Duncan</span><span class="text-base-content/60 text-xs">Just Now</span></div>
-                                        <p class="text-base-content/70 mt-0.5 text-xs">Edited package.json in e-commerce</p>
-                                    </div>
-                                    <hr>
-                                </li>
-                                <li>
-                                    <hr>
-                                    <div class="timeline-middle">
-                                        <div class="bg-primary/10 text-primary flex items-center rounded-full p-2"><span class="iconify lucide--arrow-up-from-line size-4"></span></div>
-                                    </div>
-                                    <div class="timeline-end my-2.5 w-full px-4">
-                                        <div class="flex items-center justify-between"><span class="text-sm font-medium">Tillie Frank</span><span class="text-base-content/60 text-xs">22 hours</span></div>
-                                        <p class="text-base-content/70 mt-0.5 text-xs">Uploaded app.tsx file in react directory</p>
-                                    </div>
-                                    <hr>
-                                </li>
-                                <li>
-                                    <hr>
-                                    <div class="timeline-middle">
-                                        <div class="bg-error/10 text-error flex items-center rounded-full p-2"><span class="iconify lucide--trash size-4"></span></div>
-                                    </div>
-                                    <div class="timeline-end my-2.5 w-full px-4">
-                                        <div class="flex items-center justify-between"><span class="text-sm font-medium">Zaid Pope</span><span class="text-base-content/60 text-xs">3 days</span></div>
-                                        <p class="text-base-content/70 mt-0.5 text-xs">Removed style.css &amp; images folder from root</p>
-                                    </div>
-                                    <hr>
-                                </li>
-                                <li>
-                                    <hr>
-                                    <div class="timeline-middle">
-                                        <div class="bg-primary/10 text-primary flex items-center rounded-full p-2"><span class="iconify lucide--folder-input size-4"></span></div>
-                                    </div>
-                                    <div class="timeline-end my-2.5 w-full px-4">
-                                        <div class="flex items-center justify-between"><span class="text-sm font-medium">Grover Russo</span><span class="text-base-content/60 text-xs">Week ago</span></div>
-                                        <p class="text-base-content/70 mt-0.5 text-xs">Moved folders to inner directory</p>
-                                    </div>
-                                    <hr>
-                                </li>
-                                <li>
-                                    <hr>
-                                    <div class="timeline-middle">
-                                        <div class="bg-success/10 text-success flex items-center rounded-full p-2"><span class="iconify lucide--folder-plus size-4"></span></div>
-                                    </div>
-                                    <div class="timeline-end my-2.5 w-full px-4">
-                                        <div class="flex items-center justify-between"><span class="text-sm font-medium">Qasim Cotton</span><span class="text-base-content/60 text-xs">This month</span></div>
-                                        <p class="text-base-content/70 mt-0.5 text-xs">Created the root project</p>
-                                    </div>
-                                    <hr>
-                                </li>
-                                <li>
-                                    <hr>
-                                    <div class="timeline-middle">
-                                        <div class="bg-base-200 flex items-center rounded-full p-2"><span class="iconify lucide--more-horizontal size-4"></span></div>
-                                    </div>
-                                    <div class="timeline-end mx-5 my-2">
-                                        <button class="btn btn-sm btn-soft btn-primary">View Full Activity</button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

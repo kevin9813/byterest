@@ -1,54 +1,43 @@
 <main class="flex-1 p-6 overflow-auto h-screen">
-<div class="stats shadow">
-    <div class="stat">
-      <div class="stat-figure text-primary">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          class="inline-block h-8 w-8 stroke-current">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-        </svg>
+
+  <div class="mr-6">
+    <div class="grid grid-cols-12 gap-5">
+
+      <div class="col-span-12 md:col-span-4 xl:col-span-3 2xl:col-span-2">
+        <div class="card bg-base-100 shadow false"><div class="card-body gap-2 p-4 2xl:p-5"><div class="flex items-center gap-3"><div class="bg-base-200 rounded-box flex items-center p-1.5 false"><span class="iconify size-4.5 lucide--handshake"></span></div><p class="line-clamp-1 font-medium max-2xl:text-sm">Closed Deals</p></div><div class="mt-5 mb-0.5 flex items-center gap-2 text-sm 2xl:gap-3"><p class="text-lg leading-0 font-medium 2xl:text-2xl">574</p><div class="badge badge-soft badge-error badge-sm gap-0.5 px-1.5 false"><span class="iconify lucide--arrow-down size-3"></span>-2.4%</div></div></div></div>
       </div>
-      <div class="stat-title">Total Likes</div>
-      <div class="stat-value text-primary">25.6K</div>
-      <div class="stat-desc">21% more than last month</div>
-    </div>
-  
-    <div class="stat">
-      <div class="stat-figure text-secondary">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          class="inline-block h-8 w-8 stroke-current">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-        </svg>
-      </div>
-      <div class="stat-title">Page Views</div>
-      <div class="stat-value text-secondary">2.6M</div>
-      <div class="stat-desc">21% more than last month</div>
-    </div>
-  
-    <div class="stat">
-      <div class="stat-figure text-secondary">
-        <div class="avatar online">
-          <div class="w-16 rounded-full">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-          </div>
+
+      <div class="col-span-12 md:col-span-8 xl:col-span-6 2xl:col-span-7">
+        <div class="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="my-accordion-3" checked="checked" />
+          <div class="collapse-title font-semibold">How do I create an account?</div>
+          <div class="collapse-content text-sm">Click the "Sign Up" button in the top right corner and follow the registration process.</div>
+        </div>
+        <div class="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title font-semibold">I forgot my password. What should I do?</div>
+          <div class="collapse-content text-sm">Click on "Forgot Password" on the login page and follow the instructions sent to your email.</div>
+        </div>
+        <div class="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title font-semibold">How do I update my profile information?</div>
+          <div class="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make changes.</div>
         </div>
       </div>
-      <div class="stat-value">86%</div>
-      <div class="stat-title">Tasks done</div>
-      <div class="stat-desc text-secondary">31 tasks remaining</div>
+
+      <div class="col-span-12 xl:col-span-3">
+        <div class="card w-96 bg-base-100 card-xl shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Xlarge Card</h2>
+            <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+            <div class="justify-end card-actions">
+              <button class="btn btn-primary">Buy Now</button>
+            </div>
+          </div>
+        </div>        
+      </div>
+
     </div>
   </div>
+
 </main>

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class SettingPageController extends Controller
 {   
 
-    public function index(){ ///View
+    //Views
+    public function index(){ 
         GeneralController::renderHeader([
             "tittle" => "Page",
             "submodule" => 1
