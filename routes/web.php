@@ -25,6 +25,8 @@ Route::middleware(['auth'])->group(function () {
     
     //Users
     Route::prefix("user")->group(function () {
+        Route::get('/', [UserController::class, 'viewUsers']); // users
+        
         Route::post("create", [LoginController::class, "createUser"]); //Create user
     });
 

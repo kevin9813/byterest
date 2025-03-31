@@ -95,7 +95,7 @@
                         <h3 class="menu-title">Usuarios</h3>
                         <ul>
                             <li>
-                                <a href="/profile" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
+                                <a href="/user" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
                                     <i class="material-icons text-3xl">group</i> Usuarios</a>
                             </li>
                             <li>

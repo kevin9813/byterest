@@ -15,6 +15,16 @@ use App\Models\Permission;
 class UserController extends Controller
 {
     //Vistas
+    public function viewUsers(){
+        GeneralController::renderHeader([
+            "tittle" => "Usuarios",
+            "submodule" => 1
+        ]);
+        echo view("components.setting.user.list", []);
+
+        GeneralController::renderFooter(["components/setting/user/list"], "", 2, 2);
+    }
+
     public function viewPermission(){
         GeneralController::renderHeader([
             "tittle" => "Permisos",
@@ -66,22 +76,29 @@ class UserController extends Controller
 
     //Post
     public function addDeletePermissionByRole(Request $request){
-        if($request->isChecked){
-            RolePermission::insert([
-                'role_id'=> $request->roleId,
-                'permission_id'=> $request->permissionId
-            ]); 
-            $message = "Permiso asignado exitosamente";
-        }else{
-            RolePermission::where('role_id', $request->roleId)
-              ->where('permission_id', $request->permissionId)
-              ->delete();
-            $message = "Permiso eliminado exitosamente";
+    if ($request->isChecked) {
+        // Usamos create() en lugar de insert() para disparar el evento 'created'
+        RolePermission::create([
+            'role_id' => $request->roleId,
+            'permission_id' => $request->permissionId
+        ]);
+        $message = "Permiso asignado exitosamente";
+    } else {
+        // Primero buscamos el modelo y luego lo eliminamos para disparar el evento 'deleted'
+        $rolePermission = RolePermission::where('role_id', $request->roleId)
+            ->where('permission_id', $request->permissionId)
+            ->first();
+
+        if ($rolePermission) {
+            $rolePermission->delete(); // Esto dispara el evento 'deleted'
         }
 
-        return response()->json([
-            'status' => 200,
-            'message' => $message
-        ]);
+        $message = "Permiso eliminado exitosamente";
     }
+
+    return response()->json([
+        'status' => 200,
+        'message' => $message
+    ]);
+}
 }

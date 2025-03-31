@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-
 //Models
 use App\Models\User;
+use App\Models\UserBranch;
 
 class LoginController extends Controller
 {
@@ -35,7 +35,6 @@ class LoginController extends Controller
             session(['user_id' => $user->id]);
             session(['user_name' => $user->name]);
             session(['company_id' => $user->company_id]);
-
             return redirect()->intended('/dashboard');
         }
 
