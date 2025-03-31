@@ -104,7 +104,7 @@
                     </table>
                 </div>
 
-                {{-- //Paginador  --}}
+                {{-- Paginador  --}}
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
                     <div class="flex gap-1 md:col-span-6">
                         <button v-show="products.current_page != 1" @click="changePage((products.current_page - 1))" class="btn btn-square btn-ghost join-item" aria-label="Pagination controls">
@@ -121,6 +121,8 @@
                     </div>
                     <div class="gap-1 md:col-span-6">Mostrando @{{ products.from }} al @{{ products.to }} de  @{{ products.total }}</div>
                 </div>
+                {{-- Fin paginador  --}}
+
 
             </div>
 
