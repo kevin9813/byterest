@@ -25,7 +25,8 @@ const app = Vue.createApp({
         const price = Vue.ref(''); 
         const active = Vue.ref(true); 
         const image = Vue.ref(null);
-        const imagePreview = Vue.ref(""); // Guardará la URL de la imagen cargada
+        const selectImagePreview = Vue.ref(""); // Guardará la URL de la imagen cargada
+        const imagePreview = Vue.ref(""); 
 
 
          // Cargar datos al iniciar
@@ -97,7 +98,7 @@ const app = Vue.createApp({
             }
             // Crear una URL de vista previa
             image.value = file;
-            imagePreview.value = URL.createObjectURL(file);
+            selectImagePreview.value = URL.createObjectURL(file);
         }
 
 
@@ -106,7 +107,7 @@ const app = Vue.createApp({
             msg.value = "";
             let hasError = false;
             
-            if(price.value < 100){
+            if(Global.utils.removeNonNumeric(price.value) < 100){
                 msg.value = "El precio no puede ser menor a 100.";
                 hasError = true;
             }else if(!price.value) {
@@ -136,7 +137,7 @@ const app = Vue.createApp({
                 formData.append("code", code.value);
                 formData.append("description", description.value); 
                 formData.append("category", category.value); 
-                formData.append("price", price.value); 
+                formData.append("price", Global.utils.removeNonNumeric(price.value)); 
                 formData.append("active", active.value);
                 if (image.value){ formData.append("image", image.value); }
                 if (is_update.value){ formData.append("id", product_id.value); }
@@ -194,12 +195,19 @@ const app = Vue.createApp({
             price.value =  "";
             active.value = true;
             imagePreview.value = "";
+            selectImagePreview.value = "";
             product_id.value = "";
+            document.getElementById("fileimageproduct").value = "";
         }
 
         //Utilidades
         const formatInputPrice= (event)=> {
-            price.value = Global.utils.formatNumber(parseFloat(event.target.value.toString()));
+            // Quitar todo lo que no sea números
+            let valor = Global.utils.removeNonNumeric(event.target.value); 
+            // Convertir a número entero
+            let num = parseInt(valor) || 0; 
+  
+            price.value = Global.utils.formatNumber(num);
         }
 
 
@@ -238,7 +246,8 @@ const app = Vue.createApp({
             description,
             price,
             active,
-            imagePreview
+            imagePreview,
+            selectImagePreview
         };
     }
 });

@@ -92,15 +92,15 @@
                 <label class="label" for="file">
                     <span class="label-text">Cargar Foto</span>
                 </label>
-                <input type="file" @change="handleFileUpload" id="file" class="file-input file-input-bordered file-input-primary w-full" accept="image/jpeg, image/png, image/heic">
+                <input type="file" @change="handleFileUpload" id="fileimageproduct" class="file-input file-input-bordered file-input-primary w-full" accept="image/jpeg, image/png, image/heic">
             </div>
 
             <!-- Vista previa de la imagen -->
             <div class="col-12 text-center mt-4">
-                <img v-if="!is_update && imagePreview" :src="imagePreview" alt="Vista previa" class="w-48 mt-2 rounded-lg shadow-lg">
-                <img v-if="is_update && imagePreview" :src="'assets/images_company/company_'+{{session('company_id')}}+'/'+imagePreview" alt="Vista previa" class="w-48 mt-2 rounded-lg shadow-lg">
+                <img v-if="selectImagePreview" :src="selectImagePreview" alt="Vista previa" class="w-48 mt-2 rounded-lg shadow-lg">
+                <img v-if="is_update && imagePreview && !selectImagePreview" :src="'assets/images_company/company_'+{{session('company_id')}}+'/'+imagePreview" alt="Vista previa" class="w-48 mt-2 rounded-lg shadow-lg">
             </div>
-        </div>
+        </div> 
 
         <!-- Botón para guardar -->
         <div class="flex justify-center mt-6">

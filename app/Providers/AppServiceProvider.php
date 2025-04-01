@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // crear log
-        RolePermission::observe(ModelObserver::class);
-        Product::observe(ModelObserver::class);
-        User::observe(ModelObserver::class);
+        //RolePermission::observe(ModelObserver::class);
+        //Product::observe(ModelObserver::class);
+        //User::observe(ModelObserver::class);
     }
 }
