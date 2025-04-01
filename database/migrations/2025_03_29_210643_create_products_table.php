@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('description')->nullable();
-            $table->decimal('price', 15, 2);
+            $table->integer('price');
             $table->string('image')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();

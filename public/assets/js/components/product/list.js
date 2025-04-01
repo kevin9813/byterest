@@ -141,15 +141,18 @@ const app = Vue.createApp({
                 if (image.value){ formData.append("image", image.value); }
                 if (is_update.value){ formData.append("id", product_id.value); }
 
-                Global.utils.swalAlertLoading();
                 try {
                     const data = await Global.post('/product/file', formData);
                     if(data.status == 200){
+                        closeModalProducts();
                         Global.utils.swalAlertBasic('success', 'Producto', data.message);
-                        await esperar(2000); // Espera 2 segundos 
-                        window.location.reload();
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+                      
+                    }else{
+                        msg.value = data.message;
                     }
-                    console.log(data);
                 } catch (error) {
                     console.error("Error al obtener la respuesta:", error);
                 } finally {
@@ -163,7 +166,7 @@ const app = Vue.createApp({
             fetchList();
         }
 
-        const openModal = (update, data)=> {
+        const openModalProducts = (update, data)=> {
             isModalOpen.value = true;  // Abre el modal
             is_update.value = update;
             if(is_update.value){
@@ -171,7 +174,7 @@ const app = Vue.createApp({
                 category.value =  data.category_id;
                 code.value =  data.code;
                 description.value =  data.description;
-                price.value =  data.price;
+                price.value =  Global.utils.formatNumber(data.price);
                 active.value = (data.status) ? true : false;
                 imagePreview.value = data.image;
                 product_id.value = data.id;
@@ -179,15 +182,31 @@ const app = Vue.createApp({
             const modal = document.getElementById('my_modal_products');
             modal.showModal(); // Muestra el modal con la función nativa de `<dialog>`
         }
-        const closeModal = ()=> {
+        const closeModalProducts = ()=> {
             isModalOpen.value = false; // Cierra el modal
             const modal = document.getElementById('my_modal_products');
             modal.close(); // Cierra el modal con la función nativa de `<dialog>`
+            //Limpiar
+            name.value =  "";
+            category.value =  0;
+            code.value =  "";
+            description.value =  "";
+            price.value =  "";
+            active.value = true;
+            imagePreview.value = "";
+            product_id.value = "";
         }
+
+        //Utilidades
+        const formatInputPrice= (event)=> {
+            price.value = Global.utils.formatNumber(parseFloat(event.target.value.toString()));
+        }
+
 
         Vue.onMounted(() => {
             loadData();
         });
+        
 
         return {
             //Functions
@@ -196,6 +215,7 @@ const app = Vue.createApp({
             handleFileUpload,
             addUpdateProduct,
             changePage,
+            formatInputPrice,
             //Variables
             isLoadingTable,
             isLoading,
@@ -208,8 +228,8 @@ const app = Vue.createApp({
             categories,
             category,
             //Variables modals productos
-            openModal,
-            closeModal,
+            openModalProducts,
+            closeModalProducts,
             isModalOpen,
             is_update,
             msg,

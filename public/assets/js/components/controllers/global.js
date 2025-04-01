@@ -24,9 +24,9 @@ const Global = (() => {
             const response = await fetch(url, options);
             const result = await response.json();
 
-            if (!response.ok) {
-                throw new Error(result.message || `Error ${response.status}: ${response.statusText}`);
-            }
+            // if (!response.ok) {
+            //     throw new Error(result.message || `Error ${response.status}: ${response.statusText}`);
+            // }
 
             return result;
         } catch (error) {
@@ -41,8 +41,7 @@ const Global = (() => {
         toUpperCase: (text) => text ? text.toUpperCase() : '',
         toLowerCase: (text) => text ? text.toLowerCase() : '',
         capitalize: (text) => text ? text.charAt(0).toUpperCase() + text.slice(1).toLowerCase() : '',
-        formatNumber: (value) => value ?  new Intl.NumberFormat('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(value) : "0",
-
+        formatNumber: (value) => value ?  new Intl.NumberFormat('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value) : "0",
         //Alertas swal
         swalAlertLoading(title = "Cargando...", text = 'Por favor, espere...'){ Swal.fire({ title: title, text: text, allowOutsideClick: false, didOpen: () => { Swal.showLoading(); }}); }, 
         swalAlertBasic(icon, title, text){ Swal.fire({ icon: icon, title: title, text: text}); },

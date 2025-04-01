@@ -2,7 +2,7 @@
     <div class="modal-box relative w-11/12 max-w-5xl">
         <!-- Cerrar Modal -->
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="closeModal">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="closeModalProducts">✕</button>
         </form>
 
         <!-- Título -->
@@ -69,7 +69,7 @@
                     <label class="label" for="price">
                         <span class="label-text">Precio</span>
                     </label>
-                    <input v-model="price" type="text" class="input input-bordered w-full" placeholder="Precio del producto" id="price">
+                    <input v-model="price" @input="formatInputPrice" type="text" class="input input-bordered w-full" placeholder="Precio del producto" id="price">
                 </div>
 
                 <!-- Activo (Mostrar en web) -->

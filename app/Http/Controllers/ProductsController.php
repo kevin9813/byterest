@@ -48,6 +48,10 @@ class ProductsController extends Controller
                 $product = Product::findOrFail($request->id);
                 $type = "Actualizado";
             }else{
+                if ($this->validIfExistsCodeProductByCompany($request->code)){
+                    return response()->json(['status' => '422', 'message' => 'El código ya está en uso'], 422);
+                }
+
                 $product = new Product;
                 $type = "Creado";
             }
@@ -55,7 +59,7 @@ class ProductsController extends Controller
             $product->code = $request->code;
             $product->description = $request->description;
             $product->category_id = $request->category;
-            $product->price = Intval($request->price);
+            $product->price = $request->price;
             $product->status = ($request->active)? 1 : 0;
             $product->company_id = session('company_id');
             
@@ -63,8 +67,9 @@ class ProductsController extends Controller
             if(isset($request->image)){
                 $imageHelper = new ImageHelper();
                 $path = 'assets/images_company/company_'.session('company_id'); // Carpeta donde se guardará la imagen
-                $imageName = $imageHelper->resizeAndSaveImage($request->image, $path, width: 600);
-                $product->image =$imageName;
+                $imageName = 'product_'.$request->code; // Nombre deseado
+                $imageName = $imageHelper->resizeAndSaveImage($request->image, $path, width: 600, filename: $imageName);
+                $product->image = $imageName;
             }
             $product->save();
             DB::commit();
@@ -79,5 +84,11 @@ class ProductsController extends Controller
             ], 403);
         }
 
+    }
+
+    public function validIfExistsCodeProductByCompany($code){
+        return Product::where('code', $code)
+        ->where('company_id', session('company_id'))
+        ->exists();
     }
 }

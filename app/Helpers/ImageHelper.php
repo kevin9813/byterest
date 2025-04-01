@@ -19,7 +19,7 @@ class ImageHelper
         $this->manager = new ImageManager(new Driver());
     }
 
-    public function resizeAndSaveImage($file, string $path, ?int $width = null, ?int $height = null, int $quality = 80)
+    public function resizeAndSaveImage($file, string $path, ?int $width = null,  $filename = null, ?int $height = null, int $quality = 80)
     {
         // Leer la imagen
         $image = $this->manager->read($file);
@@ -33,7 +33,11 @@ class ImageHelper
             File::makeDirectory($path, 0755, true, true);
         }
         // Generar un nombre único
-        $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+        if (!$filename) {
+            $filename = uniqid(); // Si no se proporciona un nombre, se genera uno aleatorio
+        }
+
+        $filename = $filename.'.'.$file->getClientOriginalExtension();
         $fullPath = public_path($path . '/' . $filename);
 
         // Guardar la imagen con la calidad especificada

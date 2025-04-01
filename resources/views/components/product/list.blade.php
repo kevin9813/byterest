@@ -40,9 +40,13 @@
                 <div v-show="isLoadingTable"><center><img :src="'/assets/img/gif/loading.gif'" alt=""></center></div>
                 <div v-show="!isLoadingTable">
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                        <div class="col-span-6"></div>
+                        <button class="btn btn-primary col-span-3" @click="openModal(false, '')">
+                            <i class="material-icons text-3xl">category</i> Categorias 
+                        </button>
                         <!-- Botón para abrir el modal -->
-                        <button class="btn btn-primary md:col-span-12" @click="openModal(false, '')">
-                            <i class="material-icons text-3xl">add</i> Agregar producto
+                        <button class="btn btn-primary col-span-3" @click="openModalProducts(false, '')">
+                            <i class="material-icons text-3xl">format_list_bulleted_add</i> Nuevo producto
                         </button>
                     </div>
 
@@ -96,7 +100,7 @@
                                 
                                     <!-- Acciones -->
                                     <td class="text-center">
-                                        <button @click="openModal(true, product)" class="btn btn-outline btn-primary btn-sm btn-circle">
+                                        <button @click="openModalProducts(true, product)" class="btn btn-outline btn-primary btn-sm btn-circle">
                                             <i class="material-icons text-3xl">edit_square</i>
                                         </button>
                                         <button class="btn btn-outline btn-error btn-sm btn-circle">
