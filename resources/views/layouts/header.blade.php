@@ -46,10 +46,17 @@
                     <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:text-white"><i class="material-icons text-3xl">home</i></span>
                     <span>Inicio</span>
                 </a>
+                <hr>
                 <a href="/product" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
                     <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:text-white"><i class="material-icons text-3xl">inventory_2</i></span>
                     <span>Productos</span>
                 </a>
+                <hr>
+                <a href="/employee" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
+                    <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:text-white"><i class="material-icons text-3xl">badge</i></span>
+                    <span>Empleados</span>
+                </a>
+                <hr>
                 <a href="/product" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
                     <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:text-white"><i class="material-icons text-3xl">fact_check</i></span>
                     <span>Facturación</span>

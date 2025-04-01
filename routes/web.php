@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\SettingPageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EmployeeController;
 
 
 Route::middleware('web')->group(function () {
@@ -28,6 +29,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [UserController::class, 'viewUsers']); // users
         
         Route::post("create", [LoginController::class, "createUser"]); //Create user
+    });
+
+    //Empleados
+    Route::prefix("employee")->group(function () {
+        Route::get('/', [EmployeeController::class, 'viewEmployee']); // users
     });
 
     //Permission
