@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('payrolls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
-            $table->decimal('gross_salary', 10, 2);
+            $table->date('payroll_date');
+            $table->decimal('base_salary', 10, 2);
+            $table->json('glosary')->default('');
             $table->decimal('net_salary', 10, 2);
-            $table->date('pay_date');  // Fecha del pago
             $table->date('start_date');  // Fecha de inicio del período de pago
             $table->date('end_date');    // Fecha de fin del período de pago
             $table->timestamps();

@@ -6,10 +6,43 @@
                 <div class="card bg-base-100 shadow-xl p-4">
                     <div class="card-body">
 
+                        <h2 class="card-title text-lg font-semibold">Filtros</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <div class="md:col-span-2">
+                                <label for="">Documento</label>
+                                <input v-model="" type="text" class="input input-bordered w-full" placeholder="Documento">
+                            </div>
+                            <div class="md:col-span-3">
+                                <label for="">Nombre</label>
+                                <input v-model="" type="text" class="input input-bordered w-full" placeholder="Nombre">
+                            </div>
+                            <div class="md:col-span-3">
+                                <label for="">Email</label>
+                                <input v-model="" type="text" class="input input-bordered w-full" placeholder="Email">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="">Pagos</label>
+                                <select class="select select-bordered w-full text-capitalize">
+                                    <option value="0">Todas</option>
+                                    <option value="1">Pagados</option>
+                                    <option value="2">Pendientes</option>
+                                </select>
+                            </div>
+
+                            <div class="md:col-span-1">
+                                <label for="">&nbsp;</label>
+                                <button class="btn btn-soft btn-primary md:col-span-1"><i class="material-icons text-3xl">search</i> Buscar</button>
+                            </div>
+                        </div> <br>
+                        
+
+                        <button class="btn btn-primary col-span-3">
+                            <i class="material-icons text-3xl">format_list_bulleted_add</i> Nuevo empleado
+                        </button>
                         <div class="mt-4 overflow-auto">
-                            <table class="table">
+                            <table class="table w-full">
                                 <thead>
-                                    <tr>
+                                    <tr class="bg-base-200">
                                         <th>Empleado</th>
                                         <th>Documento</th>
                                         <th>Cargo</th>
@@ -20,7 +53,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="hover:bg-base-200/40">
+                                    <tr class="hover:bg-base-200">
                                         <td class="font-medium">
                                             <div class="grow">
                                                 <div class="flex gap-1">
@@ -44,7 +77,7 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr class="hover:bg-base-200/40 cursor-pointer *:text-nowrap">
+                                    <tr class="hover:bg-base-200">
                                         <td class="font-medium">
                                             <div class="grow">
                                                 <div class="flex gap-1">

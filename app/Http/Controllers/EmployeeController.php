@@ -17,4 +17,14 @@ class EmployeeController extends Controller
         echo view("components.employee.employee", []);
         GeneralController::renderFooter(["components/employee/employee"], "", 2, 2);
     }
+
+
+    //Get
+
+
+
+    //Post
+    public function filterEmployee(Request $request){
+        
+    }
 }
