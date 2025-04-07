@@ -60,7 +60,7 @@
                                 <th>Documento</th>
                                 <th>Cargo</th>
                                 <th>Salario</th>
-                                <th>Estado</th>
+                                <th>Pago</th>
                                 <th>Frecuencia de pago</th>
                                 <th></th>
                             </tr>
@@ -79,7 +79,7 @@
                                 <td class="font-medium">113488923</td>
                                 <td>Vendedor</td>
                                 <td class="text-sm font-medium">$ 2.200.000,00</td>
-                                <td><div aria-label="Badge" class="badge badge-soft badge-success">Activo</div></td>
+                                <td><div aria-label="Badge" class="badge badge-soft badge-success">Pagado</div></td>
                                 <td class="text-sm">Quincenal</td>
                                 <td>
                                     <button aria-label="Show product" class="btn btn-square btn-ghost btn-xs">
@@ -103,7 +103,7 @@
                                 <td class="font-medium">113488923</td>
                                 <td>Vendedor</td>
                                 <td class="text-sm font-medium">$ 2.200.000,00</td>
-                                <td><div aria-label="Badge" class="badge badge-soft badge-error">Inactivo</div></td>
+                                <td><div aria-label="Badge" class="badge badge-soft badge-error">Pendiente</div></td>
                                 <td class="text-sm">Quincenal</td>
                                 <td>
                                     <button aria-label="Show product" class="btn btn-square btn-ghost btn-xs">
