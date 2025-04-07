@@ -38,6 +38,18 @@
             <script type="module" src="{{ asset("assets/js/" . $script . ".js?=1.0.1") }}"></script>
         @endif
     @endif
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const calendarEl = document.getElementById('calendar')
+          const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+          })
+          calendar.render()
+        })
+    </script>
+
     
     </body>
 </html>

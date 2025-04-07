@@ -63,7 +63,7 @@
                     <span>Facturación</span>
                 </a>
                 <hr>
-                <a href="/product" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
+                <a href="/booking" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
                     <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:text-white"><i class="material-icons text-3xl">event_note</i></span>
                     <span>Reservas</span>
                 </a>

@@ -10,6 +10,7 @@ use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\SettingPageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\BookingController;
 
 
 Route::middleware('web')->group(function () {
@@ -34,6 +35,11 @@ Route::middleware(['auth'])->group(function () {
     //Empleados
     Route::prefix("employee")->group(function () {
         Route::get('/', [EmployeeController::class, 'viewEmployee']); // users
+    });
+
+    //Empleados
+    Route::prefix("booking")->group(function () {
+        Route::get('/', [BookingController::class, 'viewBooking']); // users
     });
 
     //Permission

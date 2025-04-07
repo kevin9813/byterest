@@ -1,7 +1,4 @@
 <main class="flex-1 p-6 overflow-auto h-screen">
-
-    
-    
     
     <div class="mr-6">
         <div class="card bg-base-100 shadow-xl p-4">
@@ -81,14 +78,7 @@
                                 <td class="text-sm font-medium">$ 2.200.000,00</td>
                                 <td><div aria-label="Badge" class="badge badge-soft badge-success">Pagado</div></td>
                                 <td class="text-sm">Quincenal</td>
-                                <td>
-                                    <button aria-label="Show product" class="btn btn-square btn-ghost btn-xs">
-                                        <i class="material-icons">visibility</i>
-                                    </button>
-                                    <button aria-label="Show product" class="btn btn-square btn-ghost btn-xs">
-                                        <i class="material-icons text-error">delete</i>
-                                    </button>
-                                </td>
+                                <td class="text-center"><button class="btn btn-outline btn-primary btn-sm btn-circle"><i class="material-icons text-3xl">edit_square</i></button><button class="btn btn-outline btn-error btn-sm btn-circle"><i class="material-icons text-danger text-3xl">delete</i></button></td>
                             </tr>
                             <tr class="cursor-pointer hover:bg-base-200 transition">
                                 <td class="font-medium">
@@ -105,14 +95,7 @@
                                 <td class="text-sm font-medium">$ 2.200.000,00</td>
                                 <td><div aria-label="Badge" class="badge badge-soft badge-error">Pendiente</div></td>
                                 <td class="text-sm">Quincenal</td>
-                                <td>
-                                    <button aria-label="Show product" class="btn btn-square btn-ghost btn-xs">
-                                        <i class="material-icons text-2xl">visibility</i>
-                                    </button>
-                                    <button aria-label="Show product" class="btn btn-square btn-ghost btn-xs">
-                                        <i class="material-icons text-error">delete</i>
-                                    </button>
-                                </td>
+                                <td class="text-center"><button class="btn btn-outline btn-primary btn-sm btn-circle"><i class="material-icons text-3xl">edit_square</i></button><button class="btn btn-outline btn-error btn-sm btn-circle"><i class="material-icons text-danger text-3xl">delete</i></button></td>
                             </tr>
                         </tbody>
                     </table>
