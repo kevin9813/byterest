@@ -42,6 +42,12 @@
         <!-- Sidebar grande -->
         <aside class="sidebar-large rounded-tr-3xl rounded-br-3xl" id="sidebarLarge">
             <nav class="mt-5">
+                <center>
+                    <div class="avatar"><div class="w-16 rounded-full">
+                          <img src="{{ asset('assets/img/icono.png') }}" />
+                    </div></div>
+                </center> <br>
+
                 <a href="/dashboard" class="flex items-center space-x-2 text-primary transition-colors rounded-lg group hover:bg-primary hover:text-white">
                     <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:text-white"><i class="material-icons text-3xl">home</i></span>
                     <span>Inicio</span>
